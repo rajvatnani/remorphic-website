@@ -1,3 +1,5 @@
+export const dynamic = 'force-dynamic'
+
 import { supabase } from '@/lib/supabase'
 import { Badge } from '@/components/ui/badge'
 import { buttonVariants } from '@/components/ui/button'

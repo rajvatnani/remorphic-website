@@ -5,6 +5,7 @@ ALTER TABLE businesses ADD COLUMN IF NOT EXISTS photo TEXT;
 ALTER TABLE businesses ADD COLUMN IF NOT EXISTS price_per_slot DECIMAL(10,2);
 ALTER TABLE businesses ADD COLUMN IF NOT EXISTS address TEXT;
 -- slug column already exists in businesses table; booking URL is /book/{slug}
+ALTER TABLE businesses DROP COLUMN IF EXISTS booking_url;
 
 -- 2. Create tournaments table
 CREATE TABLE IF NOT EXISTS tournaments (
