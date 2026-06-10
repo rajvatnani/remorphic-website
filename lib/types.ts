@@ -7,7 +7,6 @@ export type Court = {
   price_per_slot: number | null
   phone: string | null
   owner_name: string | null
-  booking_url: string | null
 }
 
 export type Tournament = {

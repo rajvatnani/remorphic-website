@@ -10,7 +10,7 @@ import { MapPin, IndianRupee, ArrowRight, Zap, Users, Trophy } from 'lucide-reac
 async function getFeaturedCourts(): Promise<Court[]> {
   const { data } = await supabase
     .from('businesses')
-    .select('id, name, slug, photo, address, price_per_slot, phone, owner_name, booking_url')
+    .select('id, name, slug, photo, address, price_per_slot, phone, owner_name')
     .eq('type', 'pickleball')
     .limit(3)
   return (data as Court[]) ?? []
@@ -187,7 +187,7 @@ export default async function HomePage() {
 }
 
 function CourtCard({ court }: { court: Court }) {
-  const bookingHref = court.booking_url ?? (court.phone ? `tel:${court.phone}` : '#')
+  const bookingHref = court.slug ? `/book/${court.slug}` : (court.phone ? `tel:${court.phone}` : '#')
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow border border-gray-100">

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 async function getCourts(): Promise<Court[]> {
   const { data } = await supabase
     .from('businesses')
-    .select('id, name, slug, photo, address, price_per_slot, phone, owner_name, booking_url')
+    .select('id, name, slug, photo, address, price_per_slot, phone, owner_name')
     .eq('type', 'pickleball')
     .order('name', { ascending: true })
   return (data as Court[]) ?? []
@@ -59,7 +59,7 @@ export default async function CourtsPage() {
 }
 
 function CourtCard({ court }: { court: Court }) {
-  const bookingHref = court.booking_url ?? (court.phone ? `tel:${court.phone}` : null)
+  const bookingHref = court.slug ? `/book/${court.slug}` : (court.phone ? `tel:${court.phone}` : null)
 
   return (
     <Card className="overflow-hidden hover:shadow-xl transition-all duration-200 border border-gray-100 group">
@@ -108,7 +108,6 @@ function CourtCard({ court }: { court: Court }) {
         {bookingHref ? (
           <a
             href={bookingHref}
-            target={court.booking_url ? '_blank' : undefined}
             rel="noopener noreferrer"
             className={cn(buttonVariants(), 'w-full bg-orange-600 hover:bg-orange-700')}
           >
