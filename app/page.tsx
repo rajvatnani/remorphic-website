@@ -189,7 +189,8 @@ export default async function HomePage() {
 }
 
 function CourtCard({ court }: { court: Court }) {
-  const bookingHref = court.slug ? `/book/${court.slug}` : (court.phone ? `tel:${court.phone}` : '#')
+  const crmUrl = process.env.NEXT_PUBLIC_CRM_URL ?? 'https://remorphic-crm.vercel.app'
+  const bookingHref = court.slug ? `${crmUrl}/book/${court.slug}` : (court.phone ? `tel:${court.phone}` : '#')
 
   return (
     <Card className="overflow-hidden hover:shadow-lg transition-shadow border border-gray-100">
