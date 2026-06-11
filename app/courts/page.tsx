@@ -1,4 +1,5 @@
-import { MapPin, Phone, IndianRupee } from 'lucide-react'
+import Image from 'next/image'
+import { MapPin, Phone, IndianRupee, ArrowUpRight } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -7,114 +8,138 @@ export const metadata: Metadata = {
 }
 
 // ─── ADD / EDIT COURTS HERE ───────────────────────────────────────────────────
+// Replace `image` with your own court photo URL, or leave the Unsplash default.
 const courts = [
   {
     name: 'Smash N Serve',
+    tagline: 'Indore\'s premier indoor pickleball facility',
     area: 'Central Indore',
     address: 'Indore, Madhya Pradesh',
     phone: null as string | null,
     pricePerSlot: null as number | null,
     slug: 'smash-n-serve-f730cf',
-    // accent: one of orange | lime | rose | purple | amber
-    accent: 'orange' as const,
+    image: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1200&q=80',
+    features: ['Indoor Courts', 'Equipment Available', 'Coaching Sessions'],
   },
 ]
 // ──────────────────────────────────────────────────────────────────────────────
 
 const CRM_URL = process.env.NEXT_PUBLIC_CRM_URL ?? 'https://remorphic-crm.vercel.app'
 
-const accentMap = {
-  orange: { bar: 'bg-gradient-to-r from-orange-500 to-amber-400', badge: 'bg-orange-500/10 text-orange-500 border-orange-500/20', btn: 'bg-orange-500 hover:bg-orange-600 shadow-orange-500/20' },
-  lime:   { bar: 'bg-gradient-to-r from-lime-400 to-emerald-400', badge: 'bg-lime-500/10 text-lime-600 border-lime-500/20', btn: 'bg-lime-500 hover:bg-lime-600 shadow-lime-500/20' },
-  rose:   { bar: 'bg-gradient-to-r from-rose-500 to-pink-500', badge: 'bg-rose-500/10 text-rose-500 border-rose-500/20', btn: 'bg-rose-500 hover:bg-rose-600 shadow-rose-500/20' },
-  purple: { bar: 'bg-gradient-to-r from-purple-500 to-violet-500', badge: 'bg-purple-500/10 text-purple-500 border-purple-500/20', btn: 'bg-purple-500 hover:bg-purple-600 shadow-purple-500/20' },
-  amber:  { bar: 'bg-gradient-to-r from-amber-400 to-yellow-400', badge: 'bg-amber-500/10 text-amber-600 border-amber-500/20', btn: 'bg-amber-500 hover:bg-amber-600 shadow-amber-500/20' },
-}
-
 export default function CourtsPage() {
   return (
-    <div>
-      {/* Header */}
-      <section className="bg-zinc-950 py-20 relative overflow-hidden">
+    <div className="bg-white">
+      {/* ── HEADER ── */}
+      <section className="bg-[#111] py-24 relative overflow-hidden">
         <div className="absolute inset-0 opacity-[0.04]"
           style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-        <div className="relative max-w-6xl mx-auto px-4">
-          <p className="text-xs font-black uppercase tracking-widest text-lime-400 mb-2">Where to Play</p>
-          <h1 className="font-[family-name:--font-display] text-6xl md:text-8xl text-white tracking-wide leading-none">
-            COURTS IN<br />INDORE.
+        <div className="relative max-w-6xl mx-auto px-6">
+          <p className="text-xs font-black uppercase tracking-widest text-lime-400 mb-3">Where to Play</p>
+          <h1 className="font-[family-name:--font-display] text-7xl md:text-9xl text-white tracking-wide leading-none">
+            COURTS.
           </h1>
-          <p className="text-zinc-400 mt-4 max-w-lg">
-            All verified pickleball venues in the city. Book your slot and get on the court.
+          <p className="text-zinc-400 mt-5 text-lg max-w-lg">
+            Every verified pickleball venue in Indore, in one place.
           </p>
         </div>
       </section>
 
-      {/* Courts Grid */}
-      <section className="bg-white py-16">
-        <div className="max-w-6xl mx-auto px-4">
-          {courts.length === 0 ? (
-            <div className="text-center py-24 border-2 border-dashed border-zinc-200 rounded-2xl">
-              <div className="text-6xl mb-4">🏓</div>
-              <p className="font-black text-xl uppercase text-zinc-400">No courts listed yet</p>
-              <p className="text-sm text-zinc-400 mt-2">Add courts in <code className="bg-zinc-100 px-1 rounded">app/courts/page.tsx</code></p>
-            </div>
-          ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {courts.map((court) => {
-                const a = accentMap[court.accent]
-                const bookingHref = `${CRM_URL}/book/${court.slug}`
-                return (
-                  <div key={court.slug} className="rounded-2xl overflow-hidden border border-zinc-100 hover:shadow-2xl transition-all duration-300 group bg-white flex flex-col">
-                    {/* Color bar */}
-                    <div className={`h-3 w-full ${a.bar}`} />
-
-                    {/* Court image placeholder */}
-                    <div className="h-44 bg-zinc-50 flex items-center justify-center relative overflow-hidden">
-                      <span className="text-7xl opacity-30 group-hover:opacity-50 transition-opacity">🏓</span>
-                      <div className={`absolute top-3 left-3 text-xs font-black uppercase tracking-widest px-3 py-1 rounded-full border ${a.badge}`}>
-                        {court.area}
-                      </div>
-                      {court.pricePerSlot && (
-                        <div className="absolute top-3 right-3 bg-zinc-900 text-lime-400 text-xs font-black px-3 py-1 rounded-full flex items-center gap-0.5">
-                          <IndianRupee size={11} />{court.pricePerSlot}/slot
-                        </div>
-                      )}
-                    </div>
-
-                    <div className="p-5 flex flex-col flex-1">
-                      <h3 className="font-black text-xl uppercase tracking-wide text-zinc-900 mb-1">{court.name}</h3>
-
-                      {court.address && (
-                        <p className="text-sm text-zinc-500 flex items-start gap-1.5 mb-1">
-                          <MapPin size={13} className="mt-0.5 shrink-0 text-orange-400" />
-                          {court.address}
-                        </p>
-                      )}
-                      {court.phone && (
-                        <a href={`tel:${court.phone}`} className="text-sm text-zinc-500 flex items-center gap-1.5 mb-1 hover:text-orange-500 transition-colors">
-                          <Phone size={13} className="shrink-0 text-orange-400" />
-                          {court.phone}
-                        </a>
-                      )}
-
-                      <div className="mt-auto pt-4">
-                        <a
-                          href={bookingHref}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={`block w-full text-white font-black uppercase tracking-widest text-sm text-center py-3 rounded-xl transition-all hover:scale-[1.02] shadow-lg ${a.btn}`}
-                        >
-                          Book Now →
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                )
-              })}
-            </div>
-          )}
+      {/* ── COURTS — EDITORIAL LAYOUT ── */}
+      {courts.length === 0 ? (
+        <div className="max-w-6xl mx-auto px-6 py-24 text-center">
+          <div className="text-6xl mb-4">🏓</div>
+          <p className="font-black text-xl uppercase text-zinc-400">No courts listed yet</p>
+          <p className="text-sm text-zinc-400 mt-2">Add courts in <code className="bg-zinc-100 px-1 rounded">app/courts/page.tsx</code></p>
         </div>
-      </section>
+      ) : (
+        courts.map((court, i) => {
+          const isEven = i % 2 === 0
+          const bookingHref = `${CRM_URL}/book/${court.slug}`
+          return (
+            <div key={court.slug} className={`flex flex-col ${isEven ? 'md:flex-row' : 'md:flex-row-reverse'} min-h-[520px]`}>
+              {/* Photo */}
+              <div className="relative w-full md:w-3/5 min-h-[320px] md:min-h-0 overflow-hidden">
+                <Image
+                  src={court.image}
+                  alt={court.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 60vw"
+                />
+                {/* Overlay badge */}
+                <div className="absolute top-6 left-6 bg-orange-500 text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full">
+                  {court.area}
+                </div>
+              </div>
+
+              {/* Details */}
+              <div className={`w-full md:w-2/5 bg-[#111] flex flex-col justify-center px-10 py-14`}>
+                <p className="text-xs font-black uppercase tracking-widest text-lime-400 mb-3">
+                  Court {String(i + 1).padStart(2, '0')}
+                </p>
+                <h2 className="font-[family-name:--font-display] text-5xl md:text-6xl text-white tracking-wide leading-none mb-4">
+                  {court.name.toUpperCase()}
+                </h2>
+                <p className="text-zinc-400 text-sm mb-6 leading-relaxed">{court.tagline}</p>
+
+                {/* Features */}
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {court.features.map(f => (
+                    <span key={f} className="text-xs font-bold uppercase tracking-wide bg-zinc-800 text-zinc-300 px-3 py-1.5 rounded-full">
+                      {f}
+                    </span>
+                  ))}
+                </div>
+
+                {/* Meta */}
+                <div className="space-y-2 mb-8 text-sm text-zinc-400">
+                  {court.address && (
+                    <div className="flex items-center gap-2">
+                      <MapPin size={14} className="text-orange-400 shrink-0" />
+                      {court.address}
+                    </div>
+                  )}
+                  {court.phone && (
+                    <div className="flex items-center gap-2">
+                      <Phone size={14} className="text-orange-400 shrink-0" />
+                      <a href={`tel:${court.phone}`} className="hover:text-white transition-colors">{court.phone}</a>
+                    </div>
+                  )}
+                  {court.pricePerSlot && (
+                    <div className="flex items-center gap-2 text-lime-400 font-bold">
+                      <IndianRupee size={14} className="shrink-0" />
+                      {court.pricePerSlot} per slot
+                    </div>
+                  )}
+                </div>
+
+                <a
+                  href={bookingHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-400 text-white font-black uppercase tracking-widest text-sm px-8 py-4 rounded-full transition-all hover:scale-105 self-start"
+                >
+                  Book Now <ArrowUpRight size={16} />
+                </a>
+              </div>
+            </div>
+          )
+        })
+      )}
+
+      {/* ── ADD YOUR COURT CTA ── */}
+      <div className="bg-[#111] py-16 text-center">
+        <p className="text-zinc-500 text-sm font-bold uppercase tracking-widest mb-3">Own a Court?</p>
+        <h3 className="font-[family-name:--font-display] text-3xl text-white tracking-wide mb-5">
+          LIST YOUR VENUE FOR FREE
+        </h3>
+        <a
+          href="mailto:hello@indorepickleball.com?subject=List my court"
+          className="inline-block border-2 border-zinc-600 hover:border-orange-500 text-white font-bold uppercase tracking-widest text-sm px-8 py-3 rounded-full transition-all"
+        >
+          Get in Touch →
+        </a>
+      </div>
     </div>
   )
 }
