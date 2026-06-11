@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
 
 const links = [
+  { href: '/', label: 'Home' },
   { href: '/courts', label: 'Courts' },
   { href: '/guide', label: 'Beginners' },
   { href: '/tournaments', label: 'Tournaments' },

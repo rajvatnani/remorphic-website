@@ -188,7 +188,7 @@ export default function HomePage() {
       </section>
 
       {/* ── TOURNAMENTS TEASER ── */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden px-8 py-16">
         <Image
           src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=1600&q=80"
           alt="Tournament"
@@ -197,8 +197,8 @@ export default function HomePage() {
           sizes="100vw"
         />
         <div className="absolute inset-0 bg-[#0A1628]/85" />
-        <div className="relative max-w-6xl mx-auto px-8 py-16 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
+        <div className="relative max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
+          <div className="flex-1">
             <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#C8F135]/70 mb-2">Compete</p>
             <h2 className="font-[family-name:--font-display] text-4xl font-extrabold text-white tracking-tight leading-tight">
               Tournaments happening<br /><span className="text-[#C8F135]">right here in Indore.</span>
@@ -216,8 +216,8 @@ export default function HomePage() {
 
       {/* ── CTA STRIP ── */}
       <section className="bg-[#0A1628] px-8 py-10">
-        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-          <h3 className="font-[family-name:--font-display] text-2xl font-extrabold text-white leading-snug tracking-tight max-w-sm">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-8">
+          <h3 className="font-[family-name:--font-display] text-2xl font-extrabold text-white leading-snug tracking-tight flex-1">
             Own a court in Indore?<br /><span className="text-[#C8F135]">Get listed for free.</span>
           </h3>
           <a
