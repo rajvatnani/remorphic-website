@@ -52,7 +52,6 @@ function fmtShortDate(dateStr: string) {
     day: d.getDate(),
     month: d.toLocaleString('en-IN', { month: 'short' }).toUpperCase(),
     year: d.getFullYear(),
-    full: d.toLocaleDateString('en-IN', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' }),
   }
 }
 
@@ -62,32 +61,32 @@ export default function TournamentsPage() {
   const [featured, ...rest] = upcoming
 
   return (
-    <div className="bg-[#111]">
+    <div className="bg-white">
       {/* ── HEADER ── */}
-      <section className="py-24 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.04]"
-          style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+      <section className="bg-lime-400 relative overflow-hidden py-24">
+        <div className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%)', backgroundSize: '12px 12px' }} />
         <div className="relative max-w-6xl mx-auto px-6">
-          <p className="text-xs font-black uppercase tracking-widest text-orange-500 mb-3">Compete &amp; Win</p>
-          <h1 className="font-[family-name:--font-display] text-7xl md:text-9xl text-white tracking-wide leading-none">
+          <p className="text-xs font-black uppercase tracking-widest text-zinc-600 mb-3">Compete &amp; Win</p>
+          <h1 className="font-[family-name:--font-display] text-7xl md:text-9xl text-zinc-900 tracking-wide leading-none">
             TOURNAMENTS.
           </h1>
-          <p className="text-zinc-400 mt-5 text-lg max-w-lg">
+          <p className="text-zinc-700 mt-5 text-lg max-w-lg font-medium">
             Step up. Compete against Indore&apos;s best. Make your mark.
           </p>
         </div>
       </section>
 
-      <div className="max-w-6xl mx-auto px-6 pb-20">
+      <div className="max-w-6xl mx-auto px-6 py-16">
 
         {/* ── FEATURED TOURNAMENT ── */}
         {featured && (
-          <div className="mb-8">
-            <p className="text-xs font-black uppercase tracking-widest text-lime-400 mb-5 flex items-center gap-2">
-              <span className="w-2 h-2 bg-lime-400 rounded-full animate-pulse inline-block" />
+          <div className="mb-10">
+            <p className="text-xs font-black uppercase tracking-widest text-orange-500 mb-5 flex items-center gap-2">
+              <span className="w-2 h-2 bg-orange-500 rounded-full animate-pulse inline-block" />
               Featured Upcoming
             </p>
-            <div className="relative rounded-3xl overflow-hidden min-h-[480px] flex items-end">
+            <div className="relative rounded-3xl overflow-hidden min-h-[480px] flex items-end border-2 border-zinc-200">
               <Image
                 src={featured.image}
                 alt={featured.name}
@@ -96,15 +95,10 @@ export default function TournamentsPage() {
                 sizes="100vw"
                 priority
               />
-              {/* dark gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
-
-              {/* Tag top-right */}
               <div className="absolute top-6 right-6 bg-orange-500 text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full">
                 {featured.tag}
               </div>
-
-              {/* Content bottom */}
               <div className="relative p-8 md:p-12 w-full">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
                   <div>
@@ -127,16 +121,12 @@ export default function TournamentsPage() {
                     </div>
                   </div>
                   {featured.registrationLink ? (
-                    <a
-                      href={featured.registrationLink}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0 inline-flex items-center gap-2 bg-lime-400 hover:bg-lime-300 text-black font-black uppercase tracking-widest px-8 py-4 rounded-full transition-all hover:scale-105 text-sm"
-                    >
+                    <a href={featured.registrationLink} target="_blank" rel="noopener noreferrer"
+                      className="shrink-0 inline-flex items-center gap-2 bg-lime-400 hover:bg-lime-300 text-black font-black uppercase tracking-widest px-8 py-4 rounded-full transition-all hover:scale-105 text-sm">
                       Register Now <ArrowUpRight size={16} />
                     </a>
                   ) : (
-                    <span className="shrink-0 bg-zinc-800 text-zinc-500 font-bold uppercase tracking-widest text-xs px-6 py-3 rounded-full">
+                    <span className="shrink-0 bg-white/20 text-white font-bold uppercase tracking-widest text-xs px-6 py-3 rounded-full">
                       Registration Opening Soon
                     </span>
                   )}
@@ -149,36 +139,35 @@ export default function TournamentsPage() {
         {/* ── REST OF UPCOMING ── */}
         {rest.length > 0 && (
           <div className="mb-12">
-            <p className="text-xs font-black uppercase tracking-widest text-zinc-500 mb-5 mt-10">More Upcoming</p>
+            <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-5 mt-4">More Upcoming</p>
             <div className="space-y-3">
               {rest.map(t => {
                 const d = fmtShortDate(t.date)
                 return (
-                  <div key={t.name} className="relative rounded-2xl overflow-hidden flex items-center min-h-[140px]">
+                  <div key={t.name} className="relative rounded-2xl overflow-hidden flex items-center min-h-[140px] border-2 border-zinc-200">
                     <Image src={t.image} alt={t.name} fill className="object-cover" sizes="100vw" />
-                    <div className="absolute inset-0 bg-black/75" />
+                    <div className="absolute inset-0 bg-white/85" />
                     <div className="relative flex flex-col sm:flex-row sm:items-center w-full gap-4 px-6 py-5">
-                      {/* Date block */}
-                      <div className="shrink-0 bg-orange-500 rounded-xl w-16 text-center py-3">
-                        <div className="text-xs font-black uppercase text-orange-200">{d.month}</div>
+                      <div className="shrink-0 bg-orange-500 rounded-2xl w-16 text-center py-3">
+                        <div className="text-xs font-black uppercase text-orange-100">{d.month}</div>
                         <div className="font-[family-name:--font-display] text-4xl text-white leading-none">{d.day}</div>
-                        <div className="text-xs text-orange-200">{d.year}</div>
+                        <div className="text-xs text-orange-100">{d.year}</div>
                       </div>
                       <div className="flex-1">
-                        <div className="text-xs text-orange-400 font-black uppercase tracking-widest mb-0.5">{t.tag}</div>
-                        <h3 className="font-[family-name:--font-display] text-3xl text-white tracking-wide leading-none">{t.name.toUpperCase()}</h3>
-                        <div className="flex flex-wrap gap-x-4 text-xs text-zinc-400 mt-1.5">
+                        <div className="text-xs text-orange-500 font-black uppercase tracking-widest mb-0.5">{t.tag}</div>
+                        <h3 className="font-[family-name:--font-display] text-3xl text-zinc-900 tracking-wide leading-none">{t.name.toUpperCase()}</h3>
+                        <div className="flex flex-wrap gap-x-4 text-xs text-zinc-500 mt-1.5">
                           <span className="flex items-center gap-1"><MapPin size={11} />{t.venue}</span>
-                          {t.entryFee && <span className="flex items-center gap-1 text-lime-400 font-bold"><IndianRupee size={11} />{t.entryFee}</span>}
+                          {t.entryFee && <span className="flex items-center gap-1 text-lime-600 font-bold"><IndianRupee size={11} />{t.entryFee}</span>}
                         </div>
                       </div>
                       {t.registrationLink ? (
                         <a href={t.registrationLink} target="_blank" rel="noopener noreferrer"
-                          className="shrink-0 inline-flex items-center gap-1.5 bg-orange-500 hover:bg-orange-400 text-white font-black uppercase tracking-widest text-xs px-5 py-2.5 rounded-full transition-all">
+                          className="shrink-0 inline-flex items-center gap-1.5 bg-orange-500 hover:bg-orange-600 text-white font-black uppercase tracking-widest text-xs px-5 py-2.5 rounded-full transition-all">
                           Register <ArrowUpRight size={12} />
                         </a>
                       ) : (
-                        <span className="shrink-0 text-zinc-500 font-bold text-xs uppercase tracking-widest bg-zinc-800/80 px-4 py-2 rounded-full">Soon</span>
+                        <span className="shrink-0 text-zinc-400 font-bold text-xs uppercase tracking-widest border-2 border-zinc-200 px-4 py-2 rounded-full">Soon</span>
                       )}
                     </div>
                   </div>
@@ -189,29 +178,29 @@ export default function TournamentsPage() {
         )}
 
         {upcoming.length === 0 && (
-          <div className="text-center py-20 border border-dashed border-zinc-800 rounded-2xl">
+          <div className="text-center py-20 border-2 border-dashed border-zinc-200 rounded-3xl">
             <div className="text-5xl mb-3">🏆</div>
-            <p className="font-black text-zinc-500 uppercase tracking-wide">No upcoming tournaments</p>
-            <p className="text-xs text-zinc-600 mt-2">Add them in <code className="bg-zinc-900 px-1 rounded">app/tournaments/page.tsx</code></p>
+            <p className="font-black text-zinc-400 uppercase tracking-wide">No upcoming tournaments</p>
+            <p className="text-xs text-zinc-400 mt-2">Add them in <code className="bg-zinc-100 px-1 rounded">app/tournaments/page.tsx</code></p>
           </div>
         )}
 
         {/* ── PAST ── */}
         {past.length > 0 && (
           <div>
-            <p className="text-xs font-black uppercase tracking-widest text-zinc-600 mb-5 mt-8">Past Tournaments</p>
+            <p className="text-xs font-black uppercase tracking-widest text-zinc-400 mb-5 mt-8">Past Tournaments</p>
             <div className="space-y-2">
               {past.map(t => {
                 const d = fmtShortDate(t.date)
                 return (
-                  <div key={t.name} className="flex items-center gap-4 bg-zinc-900/50 rounded-xl px-5 py-4 opacity-50">
+                  <div key={t.name} className="flex items-center gap-4 bg-zinc-50 border border-zinc-200 rounded-xl px-5 py-4 opacity-60">
                     <div className="shrink-0 text-center w-12">
-                      <div className="text-xs font-bold text-zinc-600 uppercase">{d.month}</div>
-                      <div className="font-[family-name:--font-display] text-2xl text-zinc-500 leading-none">{d.day}</div>
+                      <div className="text-xs font-bold text-zinc-400 uppercase">{d.month}</div>
+                      <div className="font-[family-name:--font-display] text-2xl text-zinc-400 leading-none">{d.day}</div>
                     </div>
                     <div>
-                      <p className="font-black text-zinc-400 uppercase tracking-wide text-sm">{t.name}</p>
-                      <p className="text-xs text-zinc-600">{t.venue}</p>
+                      <p className="font-black text-zinc-600 uppercase tracking-wide text-sm">{t.name}</p>
+                      <p className="text-xs text-zinc-400">{t.venue}</p>
                     </div>
                   </div>
                 )

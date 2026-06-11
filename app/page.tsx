@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, ArrowRight, ArrowUpRight } from 'lucide-react'
+import { MapPin, ArrowRight, ArrowUpRight, Trophy, Users, Star } from 'lucide-react'
 
 // ─── EDIT YOUR FEATURED COURTS HERE ──────────────────────────────────────────
 const featuredCourts = [
@@ -8,7 +8,6 @@ const featuredCourts = [
     name: 'Smash N Serve',
     area: 'Central Indore',
     address: 'Indore, Madhya Pradesh',
-    pricePerSlot: null as number | null,
     slug: 'smash-n-serve-f730cf',
     image: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80',
   },
@@ -18,9 +17,9 @@ const featuredCourts = [
 const CRM_URL = process.env.NEXT_PUBLIC_CRM_URL ?? 'https://remorphic-crm.vercel.app'
 
 const stats = [
-  { value: '500+', label: 'Active Players', color: 'text-orange-400' },
-  { value: '10+', label: 'Courts in Indore', color: 'text-lime-400' },
-  { value: '3×', label: 'Year-on-Year Growth', color: 'text-white' },
+  { value: '500+', label: 'Active Players', icon: Users },
+  { value: '10+', label: 'Courts in Indore', icon: Star },
+  { value: '3×', label: 'Year-on-Year Growth', icon: Trophy },
 ]
 
 const pillars = [
@@ -33,46 +32,60 @@ export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="bg-[#111] relative overflow-hidden min-h-[92vh] flex items-center">
-        <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-orange-500/8 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute bottom-0 left-1/3 w-96 h-96 bg-lime-400/5 rounded-full blur-3xl pointer-events-none" />
-        <div className="absolute inset-0 opacity-[0.035]"
-          style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+      <section className="bg-orange-500 relative overflow-hidden">
+        {/* diagonal texture */}
+        <div className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%)', backgroundSize: '12px 12px' }} />
 
-        <div className="relative max-w-6xl mx-auto px-6 py-24 w-full">
-          <div className="inline-flex items-center gap-2 bg-orange-500/20 border border-orange-500/30 text-orange-400 text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-8">
-            🔥 Indore&apos;s #1 Pickleball Community
+        <div className="relative max-w-6xl mx-auto px-6 pt-16 pb-0">
+          <div className="flex flex-col md:flex-row md:items-end gap-8">
+            <div className="flex-1 pb-16">
+              <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6">
+                🔥 Indore&apos;s #1 Pickleball Community
+              </div>
+              <h1 className="font-[family-name:--font-display] text-[clamp(5rem,16vw,11rem)] leading-none text-white tracking-wide">
+                PLAY<br/>PICKLE<br/>BALL.
+              </h1>
+              <p className="text-orange-100 text-lg max-w-md mt-5 mb-8 leading-relaxed">
+                Find courts, dominate tournaments, and join 500+ players in Indore&apos;s fastest-growing sport.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/courts"
+                  className="bg-white text-orange-600 font-black uppercase tracking-widest px-8 py-4 rounded-full text-base hover:bg-orange-50 transition-all hover:scale-105 shadow-lg">
+                  Find a Court 🏓
+                </Link>
+                <Link href="/guide"
+                  className="border-2 border-white/60 text-white font-bold uppercase tracking-widest px-8 py-4 rounded-full text-base hover:border-white hover:bg-white/10 transition-all">
+                  Learn to Play
+                </Link>
+              </div>
+            </div>
+
+            {/* Hero image — angled bottom */}
+            <div className="hidden md:block w-80 shrink-0 self-end">
+              <div className="relative h-80 rounded-t-3xl overflow-hidden border-4 border-white/30">
+                <Image
+                  src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80"
+                  alt="Pickleball players"
+                  fill
+                  className="object-cover"
+                  sizes="320px"
+                  priority
+                />
+              </div>
+            </div>
           </div>
+        </div>
+      </section>
 
-          <h1 className="font-[family-name:--font-display] text-[clamp(4.5rem,14vw,10rem)] leading-none text-white tracking-wide mb-2">
-            PLAY
-          </h1>
-          <h1 className="font-[family-name:--font-display] text-[clamp(4.5rem,14vw,10rem)] leading-none tracking-wide mb-8">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-300">PICKLE</span>
-            <span className="text-lime-400">BALL.</span>
-          </h1>
-
-          <p className="text-zinc-400 text-lg md:text-xl max-w-xl mb-10 leading-relaxed">
-            Indore&apos;s fastest-growing sport is here. Find courts, dominate tournaments, and join a community of 500+ players.
-          </p>
-
-          <div className="flex flex-wrap gap-4 mb-16">
-            <Link href="/courts"
-              className="bg-lime-400 hover:bg-lime-300 text-black font-black uppercase tracking-widest px-8 py-4 rounded-full text-base transition-all hover:scale-105 shadow-lg shadow-lime-400/10">
-              Find a Court 🏓
-            </Link>
-            <Link href="/guide"
-              className="border border-zinc-700 hover:border-zinc-500 text-white font-bold uppercase tracking-widest px-8 py-4 rounded-full text-base transition-all">
-              Learn the Game
-            </Link>
-          </div>
-
-          {/* Stats row */}
-          <div className="flex flex-wrap gap-8 pt-8 border-t border-zinc-800">
-            {stats.map(({ value, label, color }) => (
-              <div key={label}>
-                <div className={`font-[family-name:--font-display] text-4xl ${color} leading-none`}>{value}</div>
-                <div className="text-xs text-zinc-500 font-bold uppercase tracking-widest mt-0.5">{label}</div>
+      {/* ── STATS BAR ── */}
+      <section className="bg-zinc-900">
+        <div className="max-w-6xl mx-auto px-6">
+          <div className="grid grid-cols-3 divide-x divide-zinc-700">
+            {stats.map(({ value, label }) => (
+              <div key={label} className="py-8 px-4 text-center">
+                <div className="font-[family-name:--font-display] text-5xl text-orange-400 leading-none">{value}</div>
+                <div className="text-xs text-zinc-400 font-bold uppercase tracking-widest mt-1">{label}</div>
               </div>
             ))}
           </div>
@@ -86,39 +99,23 @@ export default function HomePage() {
             <div>
               <p className="text-xs font-black uppercase tracking-widest text-orange-500 mb-2">The Sport</p>
               <h2 className="font-[family-name:--font-display] text-5xl md:text-7xl text-zinc-900 tracking-wide">
-                WHAT IS PICKLEBALL?
+                WHY PICKLEBALL?
               </h2>
             </div>
             <Link href="/guide" className="mt-4 md:mt-0 text-sm font-black uppercase tracking-widest text-orange-500 hover:text-orange-600 flex items-center gap-1">
-              Full Guide <ArrowRight size={14} />
+              Full Beginner Guide <ArrowRight size={14} />
             </Link>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             {pillars.map(({ emoji, title, desc }, i) => (
-              <div key={title} className={`rounded-2xl p-8 ${
+              <div key={title} className={`rounded-3xl p-8 ${
                 i === 0 ? 'bg-orange-500 text-white' :
-                i === 1 ? 'bg-zinc-900 text-white' :
+                i === 1 ? 'bg-lime-400 text-zinc-900' :
                 'bg-zinc-100 text-zinc-900'
               }`}>
                 <div className="text-4xl mb-5">{emoji}</div>
-                <h3 className="font-black text-lg uppercase tracking-wide mb-2">{title}</h3>
-                <p className={`text-sm leading-relaxed ${i === 2 ? 'text-zinc-600' : 'opacity-75'}`}>{desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── STATS ── */}
-      <section className="bg-[#111] py-24 relative overflow-hidden border-y border-zinc-800">
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
-        <div className="relative max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-0 divide-y md:divide-y-0 md:divide-x divide-zinc-800">
-            {stats.map(({ value, label, color }) => (
-              <div key={label} className="px-8 py-10 text-center first:pl-0 last:pr-0">
-                <div className={`font-[family-name:--font-display] text-8xl ${color} leading-none mb-2`}>{value}</div>
-                <div className="text-zinc-500 font-bold uppercase tracking-widest text-xs">{label}</div>
+                <h3 className="font-black text-xl uppercase tracking-wide mb-2">{title}</h3>
+                <p className={`text-sm leading-relaxed ${i === 0 ? 'text-orange-100' : 'opacity-70'}`}>{desc}</p>
               </div>
             ))}
           </div>
@@ -126,7 +123,7 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED COURTS ── */}
-      <section className="bg-white py-24">
+      <section className="bg-zinc-50 py-24 border-y-2 border-zinc-200">
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex items-end justify-between mb-10">
             <div>
@@ -141,13 +138,13 @@ export default function HomePage() {
           </div>
 
           {featuredCourts.length === 0 ? (
-            <div className="text-center py-16 border-2 border-dashed border-zinc-200 rounded-2xl">
+            <div className="text-center py-16 border-2 border-dashed border-zinc-300 rounded-3xl">
               <p className="font-black text-zinc-400 uppercase">Add courts in app/page.tsx</p>
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
               {featuredCourts.map((court) => (
-                <div key={court.slug} className="rounded-2xl overflow-hidden border border-zinc-100 hover:shadow-2xl transition-all duration-300 group bg-white flex flex-col">
+                <div key={court.slug} className="rounded-3xl overflow-hidden border-2 border-zinc-200 hover:border-orange-400 hover:shadow-2xl transition-all duration-300 group bg-white flex flex-col">
                   <div className="relative h-52 overflow-hidden">
                     <Image
                       src={court.image}
@@ -184,18 +181,18 @@ export default function HomePage() {
       </section>
 
       {/* ── CTA BANNER ── */}
-      <section className="bg-[#111] border-t border-zinc-800 py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-[0.03]"
-          style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+      <section className="bg-lime-400 py-20 relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10"
+          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%)', backgroundSize: '12px 12px' }} />
         <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-[family-name:--font-display] text-5xl md:text-7xl text-white tracking-wide mb-4">
-            READY TO <span className="text-orange-400">SMASH?</span>
+          <h2 className="font-[family-name:--font-display] text-5xl md:text-7xl text-zinc-900 tracking-wide mb-4">
+            READY TO SMASH?
           </h2>
-          <p className="text-zinc-400 text-lg mb-8">
+          <p className="text-zinc-700 text-lg mb-8 font-medium">
             Browse all courts and book your first slot today.
           </p>
           <Link href="/courts"
-            className="inline-block bg-lime-400 hover:bg-lime-300 text-black font-black uppercase tracking-widest px-12 py-5 rounded-full text-lg transition-all hover:scale-105 shadow-xl shadow-lime-400/10">
+            className="inline-block bg-zinc-900 hover:bg-zinc-800 text-white font-black uppercase tracking-widest px-12 py-5 rounded-full text-lg transition-all hover:scale-105">
             Browse All Courts 🏓
           </Link>
         </div>
