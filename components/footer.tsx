@@ -2,49 +2,26 @@ import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <footer className="bg-zinc-900 mt-0">
-      <div className="max-w-6xl mx-auto px-4 py-12 grid grid-cols-1 md:grid-cols-3 gap-10">
-        <div>
-          <div className="flex items-center gap-2 mb-4">
-            <span className="text-2xl">🏓</span>
-            <span className="font-black text-white uppercase tracking-tight text-xl">
-              Indore <span className="text-orange-400">Pickleball</span>
-            </span>
-          </div>
-          <p className="text-sm text-zinc-400 leading-relaxed">
-            Indore&apos;s home for pickleball. Find courts, join tournaments, and grow the game.
-          </p>
+    <footer className="bg-[#060E1A]">
+      <div className="max-w-6xl mx-auto px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
+        <div className="font-[family-name:--font-display] text-base font-extrabold text-white">
+          Indore<span className="text-[#C8F135]">Pickleball</span>
         </div>
-
-        <div>
-          <h4 className="text-white font-black uppercase tracking-widest text-xs mb-4">Quick Links</h4>
-          <ul className="space-y-2.5">
-            {[
-              { href: '/courts', label: 'Find Courts' },
-              { href: '/tournaments', label: 'Tournaments' },
-              { href: '/guide', label: "Beginner's Guide" },
-              { href: '/about', label: 'About & Contact' },
-            ].map(({ href, label }) => (
-              <li key={href}>
-                <Link href={href} className="text-sm text-zinc-400 hover:text-orange-400 transition-colors font-medium">
-                  {label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+        <div className="flex items-center gap-6">
+          {[
+            { href: '/courts', label: 'Courts' },
+            { href: '/tournaments', label: 'Tournaments' },
+            { href: '/guide', label: 'Guide' },
+            { href: '/about', label: 'About' },
+          ].map(({ href, label }) => (
+            <Link key={href} href={href} className="text-xs text-white/30 hover:text-white/60 transition-colors">
+              {label}
+            </Link>
+          ))}
         </div>
-
-        <div>
-          <h4 className="text-white font-black uppercase tracking-widest text-xs mb-4">Contact</h4>
-          <a href="mailto:hello@indorepickleball.com" className="text-sm text-zinc-400 hover:text-orange-400 transition-colors">
-            hello@indorepickleball.com
-          </a>
-          <p className="text-xs text-zinc-600 mt-2">Indore, Madhya Pradesh</p>
+        <div className="text-xs text-white/30">
+          © {new Date().getFullYear()} indorepickleball.com
         </div>
-      </div>
-
-      <div className="border-t border-zinc-800 py-4 text-center text-xs text-zinc-600">
-        © {new Date().getFullYear()} Indore Pickleball. All rights reserved.
       </div>
     </footer>
   )

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, ArrowRight, ArrowUpRight, Trophy, Users, Star } from 'lucide-react'
+import { MapPin } from 'lucide-react'
 
 // ─── EDIT YOUR FEATURED COURTS HERE ──────────────────────────────────────────
 const featuredCourts = [
@@ -8,8 +8,10 @@ const featuredCourts = [
     name: 'Smash N Serve',
     area: 'Central Indore',
     address: 'Indore, Madhya Pradesh',
+    price: null as string | null,
     slug: 'smash-n-serve-f730cf',
     image: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80',
+    imgBg: 'bg-[#EAF3DE]',
   },
 ]
 // ──────────────────────────────────────────────────────────────────────────────
@@ -17,105 +19,61 @@ const featuredCourts = [
 const CRM_URL = process.env.NEXT_PUBLIC_CRM_URL ?? 'https://remorphic-crm.vercel.app'
 
 const stats = [
-  { value: '500+', label: 'Active Players', icon: Users },
-  { value: '10+', label: 'Courts in Indore', icon: Star },
-  { value: '3×', label: 'Year-on-Year Growth', icon: Trophy },
+  { value: '8+', label: 'Courts in Indore' },
+  { value: '500+', label: 'Active Players' },
+  { value: '12', label: 'Tournaments this year' },
+  { value: '24/7', label: 'Online booking' },
 ]
 
-const pillars = [
-  { emoji: '🏸', title: 'Easy to Learn', desc: 'Most beginners play a real rally within minutes. Smaller court, slower ball.' },
-  { emoji: '⚡', title: 'High Energy', desc: 'Fast rallies, smart positioning — addictive from the very first point.' },
-  { emoji: '🤝', title: 'Social by Nature', desc: "Doubles format means you're always playing with someone, not just against." },
+const features = [
+  { emoji: '📅', title: 'Instant booking', text: 'Book any court in seconds. No calls, no waiting, no hassle.', color: 'text-[#639922]' },
+  { emoji: '🏆', title: 'Tournaments', text: 'Stay updated on every upcoming tournament in Indore.', color: 'text-[#BA7517]' },
+  { emoji: '👥', title: 'Community', text: 'Connect with players, find partners, grow your game.', color: 'text-[#185FA5]' },
 ]
 
 export default function HomePage() {
   return (
     <>
       {/* ── HERO ── */}
-      <section className="bg-orange-500 relative overflow-hidden">
-        {/* diagonal texture */}
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%)', backgroundSize: '12px 12px' }} />
+      <section className="bg-[#0A1628] px-8 pt-16 pb-14 relative overflow-hidden">
+        {/* Decorative ball rings */}
+        <div className="absolute right-8 top-10 w-44 h-44 rounded-full border-[3px] border-[#C8F135]/15 flex items-center justify-center pointer-events-none">
+          <div className="w-28 h-28 rounded-full border-2 border-[#C8F135]/25 flex items-center justify-center">
+            <div className="w-16 h-16 rounded-full bg-[#C8F135] flex items-center justify-center text-3xl">🏓</div>
+          </div>
+        </div>
 
-        <div className="relative max-w-6xl mx-auto px-6 pt-16 pb-0">
-          <div className="flex flex-col md:flex-row md:items-end gap-8">
-            <div className="flex-1 pb-16">
-              <div className="inline-flex items-center gap-2 bg-white/20 text-white text-xs font-black uppercase tracking-widest px-4 py-2 rounded-full mb-6">
-                🔥 Indore&apos;s #1 Pickleball Community
-              </div>
-              <h1 className="font-[family-name:--font-display] text-[clamp(5rem,16vw,11rem)] leading-none text-white tracking-wide">
-                PLAY<br/>PICKLE<br/>BALL.
-              </h1>
-              <p className="text-orange-100 text-lg max-w-md mt-5 mb-8 leading-relaxed">
-                Find courts, dominate tournaments, and join 500+ players in Indore&apos;s fastest-growing sport.
-              </p>
-              <div className="flex flex-wrap gap-4">
-                <Link href="/courts"
-                  className="bg-white text-orange-600 font-black uppercase tracking-widest px-8 py-4 rounded-full text-base hover:bg-orange-50 transition-all hover:scale-105 shadow-lg">
-                  Find a Court 🏓
-                </Link>
-                <Link href="/guide"
-                  className="border-2 border-white/60 text-white font-bold uppercase tracking-widest px-8 py-4 rounded-full text-base hover:border-white hover:bg-white/10 transition-all">
-                  Learn to Play
-                </Link>
-              </div>
-            </div>
-
-            {/* Hero image — angled bottom */}
-            <div className="hidden md:block w-80 shrink-0 self-end">
-              <div className="relative h-80 rounded-t-3xl overflow-hidden border-4 border-white/30">
-                <Image
-                  src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=600&q=80"
-                  alt="Pickleball players"
-                  fill
-                  className="object-cover"
-                  sizes="320px"
-                  priority
-                />
-              </div>
-            </div>
+        <div className="max-w-6xl mx-auto relative">
+          <div className="inline-block bg-[#C8F135] text-[#0A1628] text-[11px] font-bold tracking-[0.1em] uppercase px-3.5 py-1.5 rounded-full mb-5">
+            Indore&apos;s #1 Pickleball Hub
+          </div>
+          <h1 className="font-[family-name:--font-display] text-5xl md:text-6xl font-extrabold text-white leading-[1.05] tracking-[-1.5px] mb-4 max-w-lg">
+            Play More.<br /><span className="text-[#C8F135]">Worry Less.</span><br />Book Fast.
+          </h1>
+          <p className="text-base text-white/60 leading-relaxed max-w-md mb-7">
+            Find courts, book slots, and join Indore&apos;s fastest growing sport community — all in one place.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/courts"
+              className="bg-[#C8F135] text-[#0A1628] text-sm font-bold px-6 py-3 rounded-lg hover:bg-[#d4f545] transition-colors">
+              Find a Court Near You
+            </Link>
+            <Link href="/guide"
+              className="bg-transparent text-white text-sm font-medium px-6 py-3 rounded-lg border border-white/30 hover:border-white/60 transition-colors">
+              What is Pickleball?
+            </Link>
           </div>
         </div>
       </section>
 
       {/* ── STATS BAR ── */}
-      <section className="bg-zinc-900">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-3 divide-x divide-zinc-700">
-            {stats.map(({ value, label }) => (
-              <div key={label} className="py-8 px-4 text-center">
-                <div className="font-[family-name:--font-display] text-5xl text-orange-400 leading-none">{value}</div>
-                <div className="text-xs text-zinc-400 font-bold uppercase tracking-widest mt-1">{label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ── WHAT IS PICKLEBALL ── */}
-      <section className="bg-white py-24">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex flex-col md:flex-row md:items-end justify-between mb-12">
-            <div>
-              <p className="text-xs font-black uppercase tracking-widest text-orange-500 mb-2">The Sport</p>
-              <h2 className="font-[family-name:--font-display] text-5xl md:text-7xl text-zinc-900 tracking-wide">
-                WHY PICKLEBALL?
-              </h2>
-            </div>
-            <Link href="/guide" className="mt-4 md:mt-0 text-sm font-black uppercase tracking-widest text-orange-500 hover:text-orange-600 flex items-center gap-1">
-              Full Beginner Guide <ArrowRight size={14} />
-            </Link>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {pillars.map(({ emoji, title, desc }, i) => (
-              <div key={title} className={`rounded-3xl p-8 ${
-                i === 0 ? 'bg-orange-500 text-white' :
-                i === 1 ? 'bg-lime-400 text-zinc-900' :
-                'bg-zinc-100 text-zinc-900'
-              }`}>
-                <div className="text-4xl mb-5">{emoji}</div>
-                <h3 className="font-black text-xl uppercase tracking-wide mb-2">{title}</h3>
-                <p className={`text-sm leading-relaxed ${i === 0 ? 'text-orange-100' : 'opacity-70'}`}>{desc}</p>
+      <section className="bg-[#C8F135]">
+        <div className="max-w-6xl mx-auto px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4">
+            {stats.map(({ value, label }, i) => (
+              <div key={label} className={`py-4 px-6 text-center ${i < 3 ? 'border-r border-[#0A1628]/15' : ''}`}>
+                <div className="font-[family-name:--font-display] text-2xl font-extrabold text-[#0A1628]">{value}</div>
+                <div className="text-xs text-[#3B6D11] font-medium mt-0.5">{label}</div>
               </div>
             ))}
           </div>
@@ -123,78 +81,89 @@ export default function HomePage() {
       </section>
 
       {/* ── FEATURED COURTS ── */}
-      <section className="bg-zinc-50 py-24 border-y-2 border-zinc-200">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="flex items-end justify-between mb-10">
-            <div>
-              <p className="text-xs font-black uppercase tracking-widest text-orange-500 mb-2">Play Here</p>
-              <h2 className="font-[family-name:--font-display] text-5xl md:text-6xl text-zinc-900 tracking-wide">
-                FEATURED COURTS
-              </h2>
-            </div>
-            <Link href="/courts" className="hidden sm:flex items-center gap-1 text-sm font-black uppercase tracking-widest text-orange-500 hover:text-orange-600">
-              All Courts <ArrowRight size={14} />
-            </Link>
-          </div>
+      <section className="bg-white px-8 py-12">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#639922] mb-2">Featured Courts</p>
+          <h2 className="font-[family-name:--font-display] text-3xl font-extrabold text-[#0A1628] tracking-tight mb-2">Book a court today</h2>
+          <p className="text-[15px] text-[#6B7280] leading-relaxed max-w-md mb-7">All courts verified and bookable instantly. Show up, play, repeat.</p>
 
           {featuredCourts.length === 0 ? (
-            <div className="text-center py-16 border-2 border-dashed border-zinc-300 rounded-3xl">
-              <p className="font-black text-zinc-400 uppercase">Add courts in app/page.tsx</p>
+            <div className="text-center py-12 border border-dashed border-zinc-200 rounded-xl">
+              <p className="text-sm text-zinc-400 font-medium">Add courts in app/page.tsx</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
               {featuredCourts.map((court) => (
-                <div key={court.slug} className="rounded-3xl overflow-hidden border-2 border-zinc-200 hover:border-orange-400 hover:shadow-2xl transition-all duration-300 group bg-white flex flex-col">
-                  <div className="relative h-52 overflow-hidden">
+                <div key={court.slug} className="border border-[#E5E7EB] rounded-xl overflow-hidden hover:border-[#C8F135] hover:shadow-md transition-all group">
+                  <div className={`relative h-28 ${court.imgBg} overflow-hidden`}>
                     <Image
                       src={court.image}
                       alt={court.name}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <div className="absolute bottom-4 left-4">
-                      <p className="text-xs font-black uppercase tracking-widest text-orange-300 mb-0.5">{court.area}</p>
-                      <h3 className="font-[family-name:--font-display] text-2xl text-white tracking-wide leading-none">{court.name.toUpperCase()}</h3>
-                    </div>
                   </div>
-                  <div className="p-5 flex items-center justify-between flex-1">
-                    <div className="flex items-center gap-1.5 text-sm text-zinc-500">
-                      <MapPin size={13} className="text-orange-400" />
-                      {court.address}
+                  <div className="p-3.5">
+                    <div className="font-[family-name:--font-display] text-sm font-bold text-[#0A1628] mb-1">{court.name}</div>
+                    <div className="flex items-center gap-1 text-xs text-[#9CA3AF] mb-3">
+                      <MapPin size={11} /> {court.area}
                     </div>
-                    <a
-                      href={`${CRM_URL}/book/${court.slug}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0 flex items-center gap-1 bg-orange-500 hover:bg-orange-600 text-white font-black uppercase tracking-widest text-xs px-4 py-2.5 rounded-full transition-all"
-                    >
-                      Book <ArrowUpRight size={12} />
-                    </a>
+                    <div className="flex items-center justify-between">
+                      <span className="text-[13px] font-semibold text-[#3B6D11]">
+                        {court.price ?? 'Book to see price'}
+                      </span>
+                      <a
+                        href={`${CRM_URL}/book/${court.slug}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="bg-[#C8F135] text-[#0A1628] text-[11px] font-bold px-3 py-1.5 rounded-[6px] hover:bg-[#d4f545] transition-colors"
+                      >
+                        Book Now
+                      </a>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           )}
+          <div className="mt-5">
+            <Link href="/courts" className="text-sm font-medium text-[#639922] hover:text-[#0A1628] transition-colors">
+              View all courts →
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* ── CTA BANNER ── */}
-      <section className="bg-lime-400 py-20 relative overflow-hidden">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%)', backgroundSize: '12px 12px' }} />
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <h2 className="font-[family-name:--font-display] text-5xl md:text-7xl text-zinc-900 tracking-wide mb-4">
-            READY TO SMASH?
-          </h2>
-          <p className="text-zinc-700 text-lg mb-8 font-medium">
-            Browse all courts and book your first slot today.
-          </p>
-          <Link href="/courts"
-            className="inline-block bg-zinc-900 hover:bg-zinc-800 text-white font-black uppercase tracking-widest px-12 py-5 rounded-full text-lg transition-all hover:scale-105">
-            Browse All Courts 🏓
-          </Link>
+      {/* ── FEATURES ── */}
+      <section className="bg-[#F9FAFB] px-8 py-12">
+        <div className="max-w-6xl mx-auto">
+          <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#639922] mb-2">Why Indore Pickleball</p>
+          <h2 className="font-[family-name:--font-display] text-3xl font-extrabold text-[#0A1628] tracking-tight mb-6">Everything in one place</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {features.map(({ emoji, title, text, color }) => (
+              <div key={title} className="bg-white rounded-xl p-5">
+                <div className={`text-2xl mb-3 ${color}`}>{emoji}</div>
+                <div className="font-[family-name:--font-display] text-[15px] font-bold text-[#0A1628] mb-1.5">{title}</div>
+                <div className="text-[13px] text-[#6B7280] leading-relaxed">{text}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA STRIP ── */}
+      <section className="bg-[#0A1628] px-8 py-10">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <h3 className="font-[family-name:--font-display] text-2xl font-extrabold text-white leading-snug tracking-tight max-w-sm">
+            Own a court in Indore?<br /><span className="text-[#C8F135]">Get listed for free.</span>
+          </h3>
+          <a
+            href="mailto:hello@indorepickleball.com?subject=List my court"
+            className="bg-[#C8F135] text-[#0A1628] text-sm font-bold px-6 py-3 rounded-lg hover:bg-[#d4f545] transition-colors shrink-0"
+          >
+            List Your Court
+          </a>
         </div>
       </section>
     </>

@@ -12,7 +12,7 @@ const rules = [
   { emoji: '🏀', title: 'Double Bounce Rule', desc: 'After the serve, both teams must let the ball bounce once before volleying.' },
   { emoji: '🚫', title: 'The Kitchen (NVZ)', desc: 'No volleying while standing in the 7 ft non-volley zone in front of the net.' },
   { emoji: '🔢', title: 'Scoring', desc: 'Only the serving team scores. Play to 11, win by 2. Tournaments use 15 or 21.' },
-  { emoji: '❌', title: 'Faults', desc: 'Ball out of bounds, volleying from the kitchen, hitting the net, or violating double-bounce.' },
+  { emoji: '❌', title: 'Faults', desc: 'Ball out of bounds, volleying from the kitchen, hitting the net, or double-bounce violation.' },
   { emoji: '👥', title: 'Doubles Play', desc: "Partners alternate serving. Communication wins — call 'mine' early." },
 ]
 
@@ -44,52 +44,54 @@ const gear = [
 ]
 
 const steps = [
-  { n: '01', text: 'Find a court — use the Courts page.' },
-  { n: '02', text: 'Borrow or rent a paddle for your first session.' },
-  { n: '03', text: "Memorise the kitchen rule — the #1 beginner mistake." },
-  { n: '04', text: 'Play doubles from day one — more fun, faster improvement.' },
-  { n: '05', text: 'Show up to an open session and meet the community.' },
+  'Find a court — use the Courts page.',
+  'Borrow or rent a paddle for your first session.',
+  'Memorise the kitchen rule — the #1 beginner mistake.',
+  'Play doubles from day one — more fun, faster improvement.',
+  'Show up to an open session and meet the community.',
 ]
 
 export default function GuidePage() {
   return (
     <div className="bg-white">
       {/* ── HEADER ── */}
-      <section className="bg-lime-400 relative overflow-hidden py-24">
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: 'repeating-linear-gradient(45deg, #000 0, #000 1px, transparent 0, transparent 50%)', backgroundSize: '12px 12px' }} />
-        <div className="relative max-w-4xl mx-auto px-6">
-          <p className="text-xs font-black uppercase tracking-widest text-zinc-600 mb-3">For New Players</p>
-          <h1 className="font-[family-name:--font-display] text-7xl md:text-9xl text-zinc-900 tracking-wide leading-none">
-            GUIDE.
+      <section className="bg-[#0A1628] px-8 py-12">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#C8F135]/70 mb-3">For New Players</p>
+          <h1 className="font-[family-name:--font-display] text-5xl font-extrabold text-white tracking-tight leading-tight">
+            Beginner&apos;s Guide
           </h1>
-          <p className="text-zinc-700 mt-4 text-lg font-medium">Zero to first game in one page. No fluff.</p>
+          <p className="text-white/60 mt-3 text-[15px] max-w-md leading-relaxed">
+            Zero to first game in one page. No fluff.
+          </p>
         </div>
       </section>
 
       {/* ── 5 STEPS ── */}
-      <section className="py-20 border-b-2 border-zinc-100">
-        <div className="max-w-4xl mx-auto px-6">
-          <p className="text-xs font-black uppercase tracking-widest text-orange-500 mb-3">Getting Started</p>
-          <h2 className="font-[family-name:--font-display] text-5xl text-zinc-900 tracking-wide mb-10">5 STEPS TO YOUR FIRST GAME.</h2>
+      <section className="px-8 py-12 border-b border-[#E5E7EB]">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#639922] mb-2">Getting Started</p>
+          <h2 className="font-[family-name:--font-display] text-3xl font-extrabold text-[#0A1628] tracking-tight mb-7">5 Steps to Your First Game.</h2>
           <div className="space-y-3">
-            {steps.map(({ n, text }, i) => (
-              <div key={n} className={`flex items-center gap-5 p-5 rounded-2xl transition-all ${
-                i === 0 ? 'bg-orange-500' :
-                i === 1 ? 'bg-lime-400' :
-                'bg-zinc-50 border-2 border-zinc-100'
+            {steps.map((text, i) => (
+              <div key={i} className={`flex items-center gap-4 p-4 rounded-xl ${
+                i === 0 ? 'bg-[#0A1628] text-white' :
+                i === 1 ? 'bg-[#C8F135]' :
+                'bg-[#F9FAFB] border border-[#E5E7EB]'
               }`}>
-                <span className={`font-[family-name:--font-display] text-5xl leading-none shrink-0 ${
-                  i === 0 ? 'text-white/30' : i === 1 ? 'text-zinc-900/20' : 'text-zinc-300'
-                }`}>{n}</span>
-                <span className={`font-bold text-base ${
-                  i === 0 ? 'text-white' : i === 1 ? 'text-zinc-900' : 'text-zinc-700'
+                <span className={`font-[family-name:--font-display] text-4xl font-extrabold leading-none shrink-0 ${
+                  i === 0 ? 'text-white/20' : i === 1 ? 'text-[#0A1628]/20' : 'text-[#E5E7EB]'
+                }`}>
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <span className={`font-medium text-[15px] ${
+                  i === 0 ? 'text-white' : i === 1 ? 'text-[#0A1628]' : 'text-[#374151]'
                 }`}>{text}</span>
               </div>
             ))}
           </div>
-          <div className="mt-8">
-            <Link href="/courts" className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-black uppercase tracking-widest px-8 py-4 rounded-full transition-all hover:scale-105">
+          <div className="mt-6">
+            <Link href="/courts" className="inline-block bg-[#C8F135] text-[#0A1628] text-sm font-bold px-6 py-3 rounded-lg hover:bg-[#d4f545] transition-colors">
               Find a Court →
             </Link>
           </div>
@@ -97,21 +99,23 @@ export default function GuidePage() {
       </section>
 
       {/* ── RULES ── */}
-      <section className="py-20 border-b-2 border-zinc-100">
-        <div className="max-w-4xl mx-auto px-6">
-          <p className="text-xs font-black uppercase tracking-widest text-orange-500 mb-3">Know Before You Play</p>
-          <h2 className="font-[family-name:--font-display] text-5xl text-zinc-900 tracking-wide mb-10">THE RULES.</h2>
+      <section className="px-8 py-12 border-b border-[#E5E7EB]">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#639922] mb-2">Know Before You Play</p>
+          <h2 className="font-[family-name:--font-display] text-3xl font-extrabold text-[#0A1628] tracking-tight mb-7">The Rules.</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {rules.map(({ emoji, title, desc }, i) => (
-              <div key={title} className={`rounded-2xl p-6 border-2 ${
-                i === 0 ? 'bg-orange-500 border-orange-500 text-white' :
-                i === 1 ? 'bg-lime-400 border-lime-400 text-zinc-900' :
-                'bg-white border-zinc-200 hover:border-orange-300 transition-colors'
+              <div key={title} className={`rounded-xl p-5 border ${
+                i === 0 ? 'bg-[#0A1628] border-[#0A1628]' :
+                i === 1 ? 'bg-[#C8F135] border-[#C8F135]' :
+                'bg-white border-[#E5E7EB] hover:border-[#C8F135] transition-colors'
               }`}>
-                <div className="text-3xl mb-3">{emoji}</div>
-                <h3 className={`font-black uppercase tracking-wide text-sm mb-2 ${i < 2 ? '' : 'text-zinc-900'}`}>{title}</h3>
-                <p className={`text-sm leading-relaxed ${
-                  i === 0 ? 'text-orange-100' : i === 1 ? 'text-zinc-700' : 'text-zinc-500'
+                <div className="text-2xl mb-2.5">{emoji}</div>
+                <h3 className={`font-[family-name:--font-display] font-bold text-sm mb-1.5 ${
+                  i === 0 ? 'text-white' : 'text-[#0A1628]'
+                }`}>{title}</h3>
+                <p className={`text-[13px] leading-relaxed ${
+                  i === 0 ? 'text-white/60' : i === 1 ? 'text-[#3B6D11]' : 'text-[#6B7280]'
                 }`}>{desc}</p>
               </div>
             ))}
@@ -119,13 +123,13 @@ export default function GuidePage() {
         </div>
       </section>
 
-      {/* ── COURT DIMENSIONS ── */}
-      <section className="bg-zinc-50 border-y-2 border-zinc-100 py-14">
-        <div className="max-w-4xl mx-auto px-6 flex flex-col md:flex-row items-center gap-8">
-          <div className="text-6xl shrink-0">📐</div>
+      {/* ── COURT INFO ── */}
+      <section className="bg-[#F9FAFB] border-b border-[#E5E7EB] px-8 py-10">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-6">
+          <div className="text-5xl shrink-0">📐</div>
           <div>
-            <h2 className="font-[family-name:--font-display] text-4xl text-zinc-900 tracking-wide mb-2">THE COURT</h2>
-            <p className="text-zinc-500 text-sm leading-relaxed max-w-lg">
+            <h2 className="font-[family-name:--font-display] text-2xl font-extrabold text-[#0A1628] tracking-tight mb-1.5">The Court</h2>
+            <p className="text-[#6B7280] text-sm leading-relaxed max-w-lg">
               20 × 44 ft — same footprint as a doubles badminton court.
               Kitchen (NVZ): 7 ft either side of the net.
               Net: 36&quot; at the sides, 34&quot; in the middle.
@@ -135,30 +139,30 @@ export default function GuidePage() {
       </section>
 
       {/* ── GEAR ── */}
-      <section className="py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <p className="text-xs font-black uppercase tracking-widest text-orange-500 mb-3">Gear Up</p>
-          <h2 className="font-[family-name:--font-display] text-5xl text-zinc-900 tracking-wide mb-2">WHAT YOU NEED.</h2>
-          <p className="text-zinc-400 text-xs mb-10">Affiliate links — we may earn a small commission.</p>
-          <div className="space-y-5">
+      <section className="px-8 py-12">
+        <div className="max-w-4xl mx-auto">
+          <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#639922] mb-2">Gear Up</p>
+          <h2 className="font-[family-name:--font-display] text-3xl font-extrabold text-[#0A1628] tracking-tight mb-1.5">What You Need.</h2>
+          <p className="text-[#9CA3AF] text-xs mb-8">Affiliate links — we may earn a small commission.</p>
+          <div className="space-y-4">
             {gear.map(({ label, emoji, tag, items }) => (
-              <div key={label} className="bg-white border-2 border-zinc-200 rounded-2xl overflow-hidden">
-                <div className="flex items-center gap-3 px-6 py-4 border-b-2 border-zinc-100 bg-zinc-50">
-                  <span className="text-2xl">{emoji}</span>
-                  <span className="font-black text-zinc-900 uppercase tracking-wide">{label}</span>
-                  <span className="ml-auto text-xs font-bold text-zinc-500 uppercase tracking-widest bg-white border border-zinc-200 px-2.5 py-1 rounded-full">{tag}</span>
+              <div key={label} className="border border-[#E5E7EB] rounded-xl overflow-hidden">
+                <div className="flex items-center gap-3 px-5 py-3.5 bg-[#F9FAFB] border-b border-[#E5E7EB]">
+                  <span className="text-xl">{emoji}</span>
+                  <span className="font-[family-name:--font-display] font-bold text-[#0A1628] text-sm">{label}</span>
+                  <span className="ml-auto text-[10px] font-bold text-[#9CA3AF] uppercase tracking-wide bg-white border border-[#E5E7EB] px-2 py-0.5 rounded-full">{tag}</span>
                 </div>
-                <div className="divide-y divide-zinc-100">
+                <div className="divide-y divide-[#F3F4F6]">
                   {items.map(({ name, price, note }) => (
-                    <div key={name} className="flex items-center justify-between px-6 py-4 hover:bg-orange-50 transition-colors">
+                    <div key={name} className="flex items-center justify-between px-5 py-3.5 hover:bg-[#F9FAFB] transition-colors">
                       <div>
-                        <p className="font-bold text-zinc-800 text-sm">{name}</p>
-                        <p className="text-xs text-zinc-400">{note}</p>
+                        <p className="font-medium text-[#374151] text-sm">{name}</p>
+                        <p className="text-xs text-[#9CA3AF]">{note}</p>
                       </div>
                       <div className="flex items-center gap-4 shrink-0">
-                        <span className="font-black text-orange-500 text-sm">{price}</span>
-                        <a href="#" className="text-xs font-bold text-zinc-400 hover:text-orange-500 flex items-center gap-1 transition-colors">
-                          Buy <ExternalLink size={11} />
+                        <span className="font-bold text-[#3B6D11] text-sm">{price}</span>
+                        <a href="#" className="text-xs font-medium text-[#9CA3AF] hover:text-[#639922] flex items-center gap-1 transition-colors">
+                          Buy <ExternalLink size={10} />
                         </a>
                       </div>
                     </div>
