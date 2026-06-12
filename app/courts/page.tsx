@@ -16,7 +16,7 @@ const courts = [
     phone: null as string | null,
     price: null as string | null,
     slug: 'smash-n-serve-f730cf',
-    image: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-t4PNFAcPTd4?auto=format&fit=crop&w=800&q=80',
     features: ['Indoor Courts', 'Equipment Available', 'Coaching Sessions'],
     imgBg: 'bg-[#EAF3DE]',
   },
