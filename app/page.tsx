@@ -10,7 +10,7 @@ const featuredCourts = [
     address: 'Indore, Madhya Pradesh',
     price: null as string | null,
     slug: 'smash-n-serve-f730cf',
-    image: 'https://images.unsplash.com/photo-t4PNFAcPTd4?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1710772099352-f8fbb7b30977?auto=format&fit=crop&w=800&q=80',
   },
 ]
 // ──────────────────────────────────────────────────────────────────────────────
@@ -31,7 +31,7 @@ export default function HomePage() {
       <section className="relative min-h-[560px] md:min-h-[640px] flex items-center overflow-hidden">
         {/* Background image */}
         <Image
-          src="https://images.unsplash.com/photo-ING2CdNTySk?auto=format&fit=crop&w=1600&q=80"
+          src="https://plus.unsplash.com/premium_photo-1709932754800-051606368c90?auto=format&fit=crop&w=1600&q=80"
           alt="Pickleball players on court"
           fill
           className="object-cover object-center"
@@ -151,7 +151,7 @@ export default function HomePage() {
             {/* Image side */}
             <div className="relative w-full md:w-1/2 min-h-[300px] md:min-h-[420px] overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-VTKZwNXhaSc?auto=format&fit=crop&w=800&q=80"
+                src="https://images.unsplash.com/photo-1734161081396-0f0572a16bf6?auto=format&fit=crop&w=800&q=80"
                 alt="Pickleball players with paddles"
                 fill
                 className="object-cover"
@@ -190,7 +190,7 @@ export default function HomePage() {
       {/* ── TOURNAMENTS TEASER ── */}
       <section className="relative overflow-hidden px-8 py-16">
         <Image
-          src="https://images.unsplash.com/photo-KO6QJcddk28?auto=format&fit=crop&w=1600&q=80"
+          src="https://images.unsplash.com/photo-1693142518820-78d7a05f1546?auto=format&fit=crop&w=1600&q=80"
           alt="Pickleball paddles and balls"
           fill
           className="object-cover"

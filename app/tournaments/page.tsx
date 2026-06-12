@@ -16,7 +16,7 @@ const tournaments = [
     venue: 'Brilliant Convention Centre, Indore',
     entryFee: 500,
     registrationLink: null as string | null,
-    image: 'https://images.unsplash.com/photo-ING2CdNTySk?auto=format&fit=crop&w=1400&q=80',
+    image: 'https://plus.unsplash.com/premium_photo-1709932754800-051606368c90?auto=format&fit=crop&w=1400&q=80',
     tag: 'Open Championship',
   },
   {
@@ -26,7 +26,7 @@ const tournaments = [
     venue: 'Yashwant Club, Indore',
     entryFee: 300,
     registrationLink: null as string | null,
-    image: 'https://images.unsplash.com/photo-VTKZwNXhaSc?auto=format&fit=crop&w=1400&q=80',
+    image: 'https://images.unsplash.com/photo-1734161081396-0f0572a16bf6?auto=format&fit=crop&w=1400&q=80',
     tag: 'Mixed Doubles',
   },
   {
@@ -36,7 +36,7 @@ const tournaments = [
     venue: 'Nehru Stadium, Indore',
     entryFee: 600,
     registrationLink: null as string | null,
-    image: 'https://images.unsplash.com/photo-J0OKd9h_aLQ?auto=format&fit=crop&w=1400&q=80',
+    image: 'https://images.unsplash.com/photo-1642104798671-01a4129f4fdc?auto=format&fit=crop&w=1400&q=80',
     tag: 'Doubles',
   },
 ]
