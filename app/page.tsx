@@ -221,10 +221,11 @@ export default function HomePage() {
             Own a court in Indore?<br /><span className="text-[#C8F135]">Get listed for free.</span>
           </h3>
           <a
-            href="mailto:hello@indorepickleball.com?subject=List my court"
-            className="bg-[#C8F135] text-[#0A1628] text-sm font-bold px-6 py-3 rounded-lg hover:bg-[#d4f545] transition-colors shrink-0"
+            href="tel:+919993905565"
+            className="bg-[#C8F135] text-[#0A1628] text-sm font-bold px-6 py-3 rounded-lg hover:bg-[#d4f545] transition-colors shrink-0 text-center"
           >
-            List Your Court
+            📞 Call / WhatsApp<br />
+            <span className="font-extrabold tracking-wide">+91-9993905565</span>
           </a>
         </div>
       </section>
