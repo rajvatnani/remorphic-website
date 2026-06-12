@@ -119,9 +119,10 @@ export default function AboutPage() {
               </h3>
               <p className="text-white/50 text-sm">Reach thousands of Indore players instantly.</p>
             </div>
-            <a href="mailto:hello@indorepickleball.com?subject=List my court on Indore Pickleball"
-              className="shrink-0 bg-[#C8F135] text-[#0A1628] font-bold text-sm px-6 py-3 rounded-lg hover:bg-[#d4f545] transition-colors">
-              Email Us →
+            <a href="tel:+919993905565"
+              className="shrink-0 bg-[#C8F135] text-[#0A1628] font-bold text-sm px-6 py-3 rounded-lg hover:bg-[#d4f545] transition-colors text-center">
+              📞 Call / WhatsApp<br />
+              <span className="font-extrabold tracking-wide">+91-9993905565</span>
             </a>
           </div>
         </div>
