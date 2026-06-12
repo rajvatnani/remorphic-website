@@ -10,7 +10,7 @@ const featuredCourts = [
     address: 'Indore, Madhya Pradesh',
     price: null as string | null,
     slug: 'smash-n-serve-f730cf',
-    image: 'https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=800&q=80',
+    image: 'https://images.unsplash.com/photo-1580244700916-4b3ef09b9d3f?auto=format&fit=crop&w=800&q=80',
   },
 ]
 // ──────────────────────────────────────────────────────────────────────────────
@@ -31,8 +31,8 @@ export default function HomePage() {
       <section className="relative min-h-[560px] md:min-h-[640px] flex items-center overflow-hidden">
         {/* Background image */}
         <Image
-          src="https://images.unsplash.com/photo-1626224583764-f87db24ac4ea?auto=format&fit=crop&w=1600&q=80"
-          alt="Pickleball action"
+          src="https://images.unsplash.com/photo-1554068865-24cecd4e34b8?auto=format&fit=crop&w=1600&q=80"
+          alt="Pickleball court"
           fill
           className="object-cover object-center"
           priority
@@ -151,8 +151,8 @@ export default function HomePage() {
             {/* Image side */}
             <div className="relative w-full md:w-1/2 min-h-[300px] md:min-h-[420px] overflow-hidden">
               <Image
-                src="https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?auto=format&fit=crop&w=800&q=80"
-                alt="Pickleball players"
+                src="https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=800&q=80"
+                alt="Pickleball court"
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -190,8 +190,8 @@ export default function HomePage() {
       {/* ── TOURNAMENTS TEASER ── */}
       <section className="relative overflow-hidden px-8 py-16">
         <Image
-          src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=1600&q=80"
-          alt="Tournament"
+          src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=1600&q=80"
+          alt="Sports tournament"
           fill
           className="object-cover"
           sizes="100vw"
