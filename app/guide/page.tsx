@@ -1,5 +1,4 @@
 import Link from 'next/link'
-import { ExternalLink } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -139,11 +138,11 @@ export default function GuidePage() {
       </section>
 
       {/* ── GEAR ── */}
-      <section className="px-8 py-12">
+      <section className="px-8 py-12 border-b border-[#E5E7EB]">
         <div className="max-w-4xl mx-auto">
           <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#639922] mb-2">Gear Up</p>
           <h2 className="font-[family-name:--font-display] text-3xl font-extrabold text-[#0A1628] tracking-tight mb-1.5">What You Need.</h2>
-          <p className="text-[#9CA3AF] text-xs mb-8">Affiliate links — we may earn a small commission.</p>
+          <p className="text-[#9CA3AF] text-xs mb-8">Approximate prices available in Indore shops and online.</p>
           <div className="space-y-4">
             {gear.map(({ label, emoji, tag, items }) => (
               <div key={label} className="border border-[#E5E7EB] rounded-xl overflow-hidden">
@@ -161,15 +160,36 @@ export default function GuidePage() {
                       </div>
                       <div className="flex items-center gap-4 shrink-0">
                         <span className="font-bold text-[#3B6D11] text-sm">{price}</span>
-                        <a href="#" className="text-xs font-medium text-[#9CA3AF] hover:text-[#639922] flex items-center gap-1 transition-colors">
-                          Buy <ExternalLink size={10} />
-                        </a>
                       </div>
                     </div>
                   ))}
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── READY TO PLAY CTA ── */}
+      <section className="bg-[#0A1628] px-8 py-12">
+        <div className="max-w-4xl mx-auto flex flex-col md:flex-row items-center gap-8">
+          <div className="flex-1 text-center md:text-left">
+            <h2 className="font-[family-name:--font-display] text-3xl font-extrabold text-white tracking-tight mb-2">
+              Ready to play your first game?
+            </h2>
+            <p className="text-white/50 text-sm leading-relaxed">
+              Find a court near you in Indore — most venues offer paddle rental for first-timers.
+            </p>
+          </div>
+          <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+            <Link href="/courts"
+              className="bg-[#C8F135] text-[#0A1628] text-sm font-bold px-7 py-3.5 rounded-lg hover:bg-[#d4f545] transition-colors text-center">
+              Find a Court →
+            </Link>
+            <Link href="/tournaments"
+              className="bg-transparent text-white text-sm font-medium px-7 py-3.5 rounded-lg border border-white/30 hover:border-white/60 hover:bg-white/5 transition-colors text-center">
+              See Tournaments
+            </Link>
           </div>
         </div>
       </section>

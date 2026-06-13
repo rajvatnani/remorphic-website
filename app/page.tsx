@@ -100,10 +100,10 @@ export default function HomePage() {
               <p className="text-sm text-zinc-400 font-medium">Add courts in app/page.tsx</p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            <div className={`grid gap-5 ${featuredCourts.length === 1 ? 'grid-cols-1 max-w-lg mx-auto' : featuredCourts.length === 2 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-3'}`}>
               {featuredCourts.map((court) => (
                 <div key={court.slug} className="border border-[#E5E7EB] rounded-xl overflow-hidden hover:border-[#C8F135] hover:shadow-lg transition-all group flex flex-col">
-                  <div className="relative h-48 overflow-hidden">
+                  <div className="relative h-52 overflow-hidden">
                     <Image
                       src={court.image}
                       alt={court.name}
@@ -111,16 +111,16 @@ export default function HomePage() {
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                       sizes="(max-width: 768px) 100vw, 33vw"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/70 to-transparent" />
                     <div className="absolute bottom-3 left-3">
                       <span className="bg-[#C8F135] text-[#0A1628] text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full">
                         {court.area}
                       </span>
                     </div>
                   </div>
-                  <div className="p-4 flex flex-col flex-1">
-                    <div className="font-[family-name:--font-display] text-base font-extrabold text-[#0A1628] mb-1">{court.name}</div>
-                    <div className="flex items-center gap-1 text-xs text-[#9CA3AF] mb-4">
+                  <div className="p-5 flex flex-col flex-1">
+                    <div className="font-[family-name:--font-display] text-lg font-extrabold text-[#0A1628] mb-1">{court.name}</div>
+                    <div className="flex items-center gap-1 text-xs text-[#9CA3AF] mb-5">
                       <MapPin size={11} /> {court.address}
                     </div>
                     <div className="flex items-center justify-between mt-auto">
@@ -131,9 +131,9 @@ export default function HomePage() {
                         href={`${CRM_URL}/book/${court.slug}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="bg-[#C8F135] text-[#0A1628] text-[11px] font-bold px-4 py-2 rounded-[6px] hover:bg-[#d4f545] transition-colors"
+                        className="bg-[#C8F135] text-[#0A1628] text-[12px] font-bold px-5 py-2.5 rounded-[6px] hover:bg-[#d4f545] transition-colors"
                       >
-                        Book Now
+                        Book Now →
                       </a>
                     </div>
                   </div>
@@ -141,6 +141,35 @@ export default function HomePage() {
               ))}
             </div>
           )}
+        </div>
+      </section>
+
+      {/* ── HOW IT WORKS ── */}
+      <section className="bg-[#0A1628] px-8 py-14">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <p className="text-[11px] font-bold tracking-[0.12em] uppercase text-[#C8F135]/60 mb-2">Simple Process</p>
+            <h2 className="font-[family-name:--font-display] text-3xl font-extrabold text-white tracking-tight">Get on the court in 3 steps.</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {[
+              { step: '01', title: 'Find a Court', desc: 'Browse verified pickleball venues in Indore — indoor, outdoor, all areas covered.', icon: '🗺️' },
+              { step: '02', title: 'Book Online', desc: 'Pick your slot, pay securely. No calls, no waiting. Instant confirmation.', icon: '📅' },
+              { step: '03', title: 'Show Up & Play', desc: 'Arrive at your booked time, pick up a paddle, and join the game. That simple.', icon: '🏓' },
+            ].map(({ step, title, desc, icon }) => (
+              <div key={step} className="relative bg-white/5 border border-white/10 rounded-xl p-6 hover:border-[#C8F135]/40 transition-colors">
+                <div className="font-[family-name:--font-display] text-6xl font-extrabold text-white/[0.06] absolute top-3 right-4 leading-none select-none">{step}</div>
+                <div className="text-3xl mb-4">{icon}</div>
+                <h3 className="font-[family-name:--font-display] text-lg font-extrabold text-white tracking-tight mb-2">{title}</h3>
+                <p className="text-sm text-white/50 leading-relaxed">{desc}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-8">
+            <Link href="/courts" className="inline-block bg-[#C8F135] text-[#0A1628] text-sm font-bold px-8 py-3.5 rounded-lg hover:bg-[#d4f545] transition-colors">
+              Browse All Courts
+            </Link>
+          </div>
         </div>
       </section>
 

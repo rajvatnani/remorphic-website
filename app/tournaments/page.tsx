@@ -199,6 +199,25 @@ export default function TournamentsPage() {
           </div>
         )}
       </div>
+
+      {/* ── CTA STRIP ── */}
+      <section className="bg-[#0A1628] px-8 py-10">
+        <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-start md:items-center gap-8">
+          <div className="flex-1">
+            <h3 className="font-[family-name:--font-display] text-2xl font-extrabold text-white leading-snug tracking-tight">
+              Want to organise a tournament?<br /><span className="text-[#C8F135]">Let&apos;s make it happen.</span>
+            </h3>
+            <p className="text-white/40 text-sm mt-1">We help with venue, registration, and promotion across Indore.</p>
+          </div>
+          <a
+            href="tel:+919993905565"
+            className="shrink-0 bg-[#C8F135] text-[#0A1628] text-sm font-bold px-6 py-3 rounded-lg hover:bg-[#d4f545] transition-colors text-center"
+          >
+            📞 Call / WhatsApp<br />
+            <span className="font-extrabold tracking-wide">+91-9993905565</span>
+          </a>
+        </div>
+      </section>
     </div>
   )
 }
