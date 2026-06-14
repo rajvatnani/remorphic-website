@@ -69,7 +69,7 @@ export default async function CourtsPage() {
               </p>
             </div>
           ) : (
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {courts.map((court) => {
                 const features = court.services_offered
                   ? court.services_offered.split(',').map(s => s.trim()).filter(Boolean)
@@ -78,8 +78,9 @@ export default async function CourtsPage() {
                 const imgSrc = court.photo ?? FALLBACK_IMAGE
 
                 return (
-                  <div key={court.slug} className="border border-[#E5E7EB] rounded-xl overflow-hidden hover:border-[#C8F135] hover:shadow-lg transition-all group flex flex-col">
-                    <div className="relative h-48 overflow-hidden bg-[#EAF3DE]">
+                  <div key={court.slug} className="border border-[#E5E7EB] rounded-2xl overflow-hidden hover:border-[#C8F135] hover:shadow-xl transition-all group flex flex-col">
+                    {/* Image */}
+                    <div className="relative h-56 overflow-hidden bg-[#EAF3DE]">
                       <Image
                         src={imgSrc}
                         alt={court.name}
@@ -87,37 +88,42 @@ export default async function CourtsPage() {
                         className="object-cover group-hover:scale-105 transition-transform duration-300"
                         sizes="(max-width: 768px) 100vw, 33vw"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/50 to-transparent" />
-                      <div className="absolute top-3 left-3 bg-[#C8F135] text-[#0A1628] text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full">
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/40 to-transparent" />
+                      <div className="absolute top-4 left-4 bg-[#C8F135] text-[#0A1628] text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
                         {area}
                       </div>
                     </div>
 
-                    <div className="p-4 flex flex-col flex-1">
-                      <div className="font-[family-name:--font-display] text-lg font-bold text-[#0A1628] mb-1.5">
+                    {/* Card body */}
+                    <div className="p-5 flex flex-col flex-1 gap-4">
+
+                      {/* Name */}
+                      <div className="font-[family-name:--font-display] text-2xl font-bold text-[#0A1628] leading-tight">
                         {court.name}
                       </div>
 
+                      {/* Service chips */}
                       {features.length > 0 && (
-                        <div className="flex flex-wrap gap-1.5 mb-3">
-                          {features.slice(0, 3).map(f => (
-                            <span key={f} className="text-[10px] font-semibold bg-[#F3F4F6] text-[#6B7280] px-2.5 py-1 rounded-full">
+                        <div className="flex flex-wrap gap-2">
+                          {features.slice(0, 4).map(f => (
+                            <span key={f} className="text-xs font-semibold bg-[#F3F4F6] text-[#4B5563] px-3 py-1.5 rounded-full">
                               {f}
                             </span>
                           ))}
                         </div>
                       )}
 
-                      <div className="space-y-1.5 text-xs text-[#9CA3AF] mb-3">
+                      {/* Address + Phone */}
+                      <div className="space-y-2">
                         {court.address && (
-                          <div className="flex items-center gap-1.5">
-                            <MapPin size={11} className="text-[#639922] shrink-0" />
-                            {court.address}
+                          <div className="flex items-start gap-2 text-sm text-[#6B7280]">
+                            <MapPin size={15} className="text-[#639922] shrink-0 mt-0.5" />
+                            <span>{court.address}</span>
                           </div>
                         )}
                         {court.phone && (
-                          <div className="flex items-center gap-1.5">
-                            <Phone size={11} className="text-[#639922] shrink-0" />
+                          <div className="flex items-center gap-2 text-sm text-[#6B7280]">
+                            <Phone size={15} className="text-[#639922] shrink-0" />
                             <a href={`tel:${court.phone}`} className="hover:text-[#0A1628] transition-colors">
                               {court.phone}
                             </a>
@@ -125,33 +131,37 @@ export default async function CourtsPage() {
                         )}
                       </div>
 
+                      {/* Map link */}
                       {court.maps_url && (
                         <a
                           href={court.maps_url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#639922] hover:text-[#0A1628] transition-colors mb-4"
+                          className="inline-flex items-center gap-2 text-sm font-semibold text-[#639922] hover:text-[#0A1628] transition-colors"
                         >
-                          <Navigation size={11} />
+                          <Navigation size={14} />
                           View on Map
                         </a>
                       )}
 
-                      <div className="flex items-center justify-between mt-auto">
+                      {/* Price + Book */}
+                      <div className="flex items-center justify-between mt-auto pt-3 border-t border-[#F3F4F6]">
                         {court.price_per_slot ? (
-                          <span className="font-bold text-[#3B6D11] flex items-center gap-0.5">
-                            <IndianRupee size={12} />
-                            <span className="text-sm">{Number(court.price_per_slot).toLocaleString('en-IN')}</span>
-                            <span className="text-[11px] font-normal text-[#9CA3AF] ml-0.5">/slot</span>
-                          </span>
+                          <div className="flex items-baseline gap-1">
+                            <span className="text-[#3B6D11] font-bold text-2xl flex items-center gap-0.5">
+                              <IndianRupee size={16} className="mt-0.5" />
+                              {Number(court.price_per_slot).toLocaleString('en-IN')}
+                            </span>
+                            <span className="text-sm text-[#9CA3AF] font-normal">/slot</span>
+                          </div>
                         ) : (
-                          <span className="text-sm font-semibold text-[#9CA3AF]">See pricing</span>
+                          <span className="text-base font-semibold text-[#9CA3AF]">See pricing</span>
                         )}
                         <a
                           href={`${CRM_URL}/book/${court.slug}`}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="bg-[#C8F135] text-[#0A1628] text-xs font-bold px-4 py-2 rounded-[6px] hover:bg-[#d4f545] transition-colors"
+                          className="bg-[#C8F135] text-[#0A1628] text-sm font-bold px-5 py-2.5 rounded-lg hover:bg-[#d4f545] transition-colors"
                         >
                           Book Now →
                         </a>
