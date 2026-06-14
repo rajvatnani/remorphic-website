@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { MapPin, Phone, IndianRupee } from 'lucide-react'
+import { MapPin, Phone, IndianRupee, Navigation } from 'lucide-react'
 import type { Metadata } from 'next'
 import { supabase } from '@/lib/supabase'
 
@@ -22,12 +22,13 @@ interface Court {
   photo: string | null
   price_per_slot: number | null
   services_offered: string | null
+  maps_url: string | null
 }
 
 export default async function CourtsPage() {
   const { data } = await supabase
     .from('businesses')
-    .select('id, name, slug, address, phone, photo, price_per_slot, services_offered')
+    .select('id, name, slug, address, phone, photo, price_per_slot, services_offered, maps_url')
     .eq('type', 'pickleball')
     .order('name')
 
@@ -107,7 +108,7 @@ export default async function CourtsPage() {
                         </div>
                       )}
 
-                      <div className="space-y-1.5 text-xs text-[#9CA3AF] mb-4">
+                      <div className="space-y-1.5 text-xs text-[#9CA3AF] mb-3">
                         {court.address && (
                           <div className="flex items-center gap-1.5">
                             <MapPin size={11} className="text-[#639922] shrink-0" />
@@ -123,6 +124,18 @@ export default async function CourtsPage() {
                           </div>
                         )}
                       </div>
+
+                      {court.maps_url && (
+                        <a
+                          href={court.maps_url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#639922] hover:text-[#0A1628] transition-colors mb-4"
+                        >
+                          <Navigation size={11} />
+                          View on Map
+                        </a>
+                      )}
 
                       <div className="flex items-center justify-between mt-auto">
                         {court.price_per_slot ? (
