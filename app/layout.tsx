@@ -1,19 +1,19 @@
 import type { Metadata } from 'next'
-import { Syne, DM_Sans } from 'next/font/google'
+import { Outfit, Inter } from 'next/font/google'
 import './globals.css'
 import Nav from '@/components/nav'
 import Footer from '@/components/footer'
 
-const dmSans = DM_Sans({
+const inter = Inter({
   variable: '--font-sans',
   subsets: ['latin'],
   weight: ['400', '500', '600'],
 })
 
-const syne = Syne({
+const outfit = Outfit({
   variable: '--font-display',
   subsets: ['latin'],
-  weight: ['700', '800'],
+  weight: ['600', '700', '800'],
 })
 
 export const metadata: Metadata = {
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${dmSans.variable} ${syne.variable}`}>
+    <html lang="en" className={`${inter.variable} ${outfit.variable}`}>
       <body className="min-h-screen flex flex-col bg-white text-gray-900 antialiased">
         <Nav />
         <main className="flex-1">{children}</main>

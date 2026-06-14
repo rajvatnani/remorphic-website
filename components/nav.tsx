@@ -20,11 +20,19 @@ export default function Nav() {
   return (
     <header className="bg-[#0A1628] border-b-[3px] border-[#C8F135] sticky top-0 z-50">
       <div className="max-w-6xl mx-auto px-8 h-16 flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-11 h-11 bg-[#C8F135] rounded-lg flex items-center justify-center text-2xl shrink-0">🏓</div>
+        <Link href="/" className="flex items-center gap-3 group">
+          {/* Bordered mark — HUDLE-inspired */}
+          <div className="border-2 border-[#C8F135] rounded-[6px] px-2.5 py-1.5 group-hover:bg-[#C8F135]/10 transition-colors">
+            <span className="font-[family-name:--font-display] text-[13px] font-bold text-[#C8F135] tracking-[0.06em] leading-none">
+              IP
+            </span>
+          </div>
+          {/* Wordmark */}
           <div className="leading-none">
-            <div className="text-[11px] font-bold text-white/50 uppercase tracking-[0.15em]">Indore</div>
-            <div className="font-[family-name:--font-display] text-[21px] font-extrabold text-[#C8F135] tracking-tight leading-none">Pickleball</div>
+            <div className="text-[9px] font-semibold text-white/40 uppercase tracking-[0.28em] mb-0.5">Indore</div>
+            <div className="font-[family-name:--font-display] text-[17px] font-bold text-white tracking-tight leading-none">
+              Pickleball
+            </div>
           </div>
         </Link>
 

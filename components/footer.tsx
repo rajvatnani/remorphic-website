@@ -8,9 +8,12 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="flex items-center gap-2.5 mb-3">
-              <div className="w-9 h-9 bg-[#C8F135] rounded-lg flex items-center justify-center text-lg shrink-0">🏓</div>
-              <div className="font-[family-name:--font-display] text-lg font-extrabold text-[#C8F135] tracking-tight">
-                Indore Pickleball
+              <div className="border-2 border-[#C8F135] rounded-[5px] px-2 py-1">
+                <span className="font-[family-name:--font-display] text-[11px] font-bold text-[#C8F135] tracking-[0.06em] leading-none">IP</span>
+              </div>
+              <div className="leading-none">
+                <div className="text-[8px] font-semibold text-white/30 uppercase tracking-[0.25em] mb-0.5">Indore</div>
+                <div className="font-[family-name:--font-display] text-[14px] font-bold text-white tracking-tight leading-none">Pickleball</div>
               </div>
             </div>
             <p className="text-xs text-white/35 leading-relaxed max-w-[200px]">
