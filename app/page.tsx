@@ -1,21 +1,12 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { MapPin, ArrowRight } from 'lucide-react'
+import { MapPin, ArrowRight, IndianRupee } from 'lucide-react'
+import { supabase } from '@/lib/supabase'
 
-// ─── EDIT YOUR FEATURED COURTS HERE ──────────────────────────────────────────
-const featuredCourts = [
-  {
-    name: 'Smash N Serve',
-    area: 'Central Indore',
-    address: 'Indore, Madhya Pradesh',
-    price: null as string | null,
-    slug: 'smash-n-serve-f730cf',
-    image: 'https://images.unsplash.com/photo-1710772099352-f8fbb7b30977?auto=format&fit=crop&w=800&q=80',
-  },
-]
-// ──────────────────────────────────────────────────────────────────────────────
+export const revalidate = 60
 
 const CRM_URL = process.env.NEXT_PUBLIC_CRM_URL ?? 'https://remorphic-crm.vercel.app'
+const FALLBACK_IMAGE = 'https://images.unsplash.com/photo-1710772099352-f8fbb7b30977?auto=format&fit=crop&w=800&q=80'
 
 const stats = [
   { value: '8+', label: 'Courts in Indore' },
@@ -24,7 +15,16 @@ const stats = [
   { value: '24/7', label: 'Online booking' },
 ]
 
-export default function HomePage() {
+export default async function HomePage() {
+  const { data } = await supabase
+    .from('businesses')
+    .select('id, name, slug, address, photo, price_per_slot')
+    .eq('type', 'pickleball')
+    .order('name')
+    .limit(3)
+
+  const featuredCourts = data ?? []
+
   return (
     <>
       {/* ── HERO — full-bleed image ── */}
@@ -97,48 +97,61 @@ export default function HomePage() {
 
           {featuredCourts.length === 0 ? (
             <div className="text-center py-12 border border-dashed border-zinc-200 rounded-xl">
-              <p className="text-sm text-zinc-400 font-medium">Add courts in app/page.tsx</p>
+              <div className="text-4xl mb-2">🏓</div>
+              <p className="text-sm text-zinc-400 font-medium">Courts being added — check back soon</p>
             </div>
           ) : (
             <div className={`grid gap-5 ${featuredCourts.length === 1 ? 'grid-cols-1 max-w-lg mx-auto' : featuredCourts.length === 2 ? 'grid-cols-1 md:grid-cols-2' : 'grid-cols-1 md:grid-cols-3'}`}>
-              {featuredCourts.map((court) => (
-                <div key={court.slug} className="border border-[#E5E7EB] rounded-xl overflow-hidden hover:border-[#C8F135] hover:shadow-lg transition-all group flex flex-col">
-                  <div className="relative h-52 overflow-hidden">
-                    <Image
-                      src={court.image}
-                      alt={court.name}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500"
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/70 to-transparent" />
-                    <div className="absolute bottom-3 left-3">
-                      <span className="bg-[#C8F135] text-[#0A1628] text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full">
-                        {court.area}
-                      </span>
+              {featuredCourts.map((court) => {
+                const area = court.address?.split(',')[0]?.trim() ?? 'Indore'
+                const imgSrc = court.photo ?? FALLBACK_IMAGE
+                return (
+                  <div key={court.slug} className="border border-[#E5E7EB] rounded-xl overflow-hidden hover:border-[#C8F135] hover:shadow-lg transition-all group flex flex-col">
+                    <div className="relative h-52 overflow-hidden bg-[#EAF3DE]">
+                      <Image
+                        src={imgSrc}
+                        alt={court.name}
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#0A1628]/70 to-transparent" />
+                      <div className="absolute bottom-3 left-3">
+                        <span className="bg-[#C8F135] text-[#0A1628] text-[10px] font-bold uppercase tracking-wide px-2.5 py-1 rounded-full">
+                          {area}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-5 flex flex-col flex-1">
+                      <div className="font-[family-name:--font-display] text-lg font-extrabold text-[#0A1628] mb-1">{court.name}</div>
+                      {court.address && (
+                        <div className="flex items-center gap-1 text-xs text-[#9CA3AF] mb-5">
+                          <MapPin size={11} /> {court.address}
+                        </div>
+                      )}
+                      <div className="flex items-center justify-between mt-auto">
+                        {court.price_per_slot ? (
+                          <span className="font-bold text-[#3B6D11] flex items-center gap-0.5">
+                            <IndianRupee size={12} />
+                            <span className="text-sm">{Number(court.price_per_slot).toLocaleString('en-IN')}</span>
+                            <span className="text-[11px] font-normal text-[#9CA3AF] ml-0.5">/slot</span>
+                          </span>
+                        ) : (
+                          <span className="text-[13px] font-semibold text-[#9CA3AF]">See pricing</span>
+                        )}
+                        <a
+                          href={`${CRM_URL}/book/${court.slug}`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="bg-[#C8F135] text-[#0A1628] text-[12px] font-bold px-5 py-2.5 rounded-[6px] hover:bg-[#d4f545] transition-colors"
+                        >
+                          Book Now →
+                        </a>
+                      </div>
                     </div>
                   </div>
-                  <div className="p-5 flex flex-col flex-1">
-                    <div className="font-[family-name:--font-display] text-lg font-extrabold text-[#0A1628] mb-1">{court.name}</div>
-                    <div className="flex items-center gap-1 text-xs text-[#9CA3AF] mb-5">
-                      <MapPin size={11} /> {court.address}
-                    </div>
-                    <div className="flex items-center justify-between mt-auto">
-                      <span className="text-[13px] font-semibold text-[#3B6D11]">
-                        {court.price ?? 'See pricing'}
-                      </span>
-                      <a
-                        href={`${CRM_URL}/book/${court.slug}`}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="bg-[#C8F135] text-[#0A1628] text-[12px] font-bold px-5 py-2.5 rounded-[6px] hover:bg-[#d4f545] transition-colors"
-                      >
-                        Book Now →
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                )
+              })}
             </div>
           )}
         </div>
