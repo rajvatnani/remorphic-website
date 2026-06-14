@@ -73,9 +73,9 @@ export default async function HomePage() {
         <div className="max-w-6xl mx-auto px-8">
           <div className="grid grid-cols-2 md:grid-cols-4">
             {stats.map(({ value, label }, i) => (
-              <div key={label} className={`py-4 px-6 text-center ${i < 3 ? 'border-r border-[#0A1628]/15' : ''}`}>
-                <div className="font-[family-name:--font-display] text-2xl font-extrabold text-[#0A1628]">{value}</div>
-                <div className="text-xs text-[#3B6D11] font-medium mt-0.5">{label}</div>
+              <div key={label} className={`py-6 px-6 text-center ${i < 3 ? 'border-r border-[#0A1628]/15' : ''}`}>
+                <div className="font-[family-name:--font-display] text-4xl font-extrabold text-[#0A1628]">{value}</div>
+                <div className="text-sm text-[#3B6D11] font-semibold mt-1">{label}</div>
               </div>
             ))}
           </div>
