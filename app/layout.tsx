@@ -17,7 +17,7 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://indorepickleball.com'),
+  metadataBase: new URL('https://www.indorepickleball.com'),
   title: {
     default: 'Pickleball Courts in Indore | Book Online | IndorePickleball',
     template: '%s | IndorePickleball',
@@ -25,17 +25,21 @@ export const metadata: Metadata = {
   description:
     'Find and book pickleball courts in Indore instantly. List of all courts, timings, pricing and online booking.',
   keywords: [
+    'pickleball',
+    'pickle ball',
+    'pickleball Indore',
+    'pickle ball Indore',
     'pickleball courts Indore',
     'book pickleball court Indore',
-    'pickleball Indore',
     'pickleball club Indore',
     'indoor pickleball Indore',
     'pickleball court near me Indore',
     'pickleball tournaments Indore',
     'pickleball coaching Indore',
     'IndorePickleball',
+    'indore pickleball',
   ],
-  authors: [{ name: 'IndorePickleball', url: 'https://indorepickleball.com' }],
+  authors: [{ name: 'IndorePickleball', url: 'https://www.indorepickleball.com' }],
   creator: 'IndorePickleball',
   robots: {
     index: true,
@@ -45,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_IN',
-    url: 'https://indorepickleball.com',
+    url: 'https://www.indorepickleball.com',
     siteName: 'IndorePickleball',
     title: 'Pickleball Courts in Indore | Book Online | IndorePickleball',
     description:
@@ -67,7 +71,7 @@ export const metadata: Metadata = {
     images: ['https://plus.unsplash.com/premium_photo-1709932754800-051606368c90?auto=format&fit=crop&w=1200&q=80'],
   },
   alternates: {
-    canonical: 'https://indorepickleball.com',
+    canonical: 'https://www.indorepickleball.com',
   },
 }
 

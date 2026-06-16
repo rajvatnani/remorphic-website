@@ -4,11 +4,11 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'About & Contact — Indore Pickleball Community',
   description: 'IndorePickleball is a community platform connecting players, courts and tournaments in Indore, Madhya Pradesh. Get in touch with us.',
-  alternates: { canonical: 'https://indorepickleball.com/about' },
+  alternates: { canonical: 'https://www.indorepickleball.com/about' },
   openGraph: {
     title: 'About IndorePickleball | Indore Pickleball Community',
     description: 'IndorePickleball is a community platform connecting players, courts and tournaments in Indore, Madhya Pradesh.',
-    url: 'https://indorepickleball.com/about',
+    url: 'https://www.indorepickleball.com/about',
   },
 }
 

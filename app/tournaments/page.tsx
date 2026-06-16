@@ -5,11 +5,11 @@ import type { Metadata } from 'next'
 export const metadata: Metadata = {
   title: 'Pickleball Tournaments in Indore',
   description: 'Upcoming pickleball tournaments in Indore — open championships, doubles cups, and seasonal events. Register online.',
-  alternates: { canonical: 'https://indorepickleball.com/tournaments' },
+  alternates: { canonical: 'https://www.indorepickleball.com/tournaments' },
   openGraph: {
     title: 'Pickleball Tournaments in Indore | IndorePickleball',
     description: 'Upcoming pickleball tournaments in Indore — open championships, doubles cups, and seasonal events. Register online.',
-    url: 'https://indorepickleball.com/tournaments',
+    url: 'https://www.indorepickleball.com/tournaments',
   },
 }
 
