@@ -17,15 +17,57 @@ const outfit = Outfit({
 })
 
 export const metadata: Metadata = {
-  title: 'Indore Pickleball — Find Courts, Tournaments & More',
-  description:
-    "Indore's home for pickleball. Find courts, join tournaments, and learn the game.",
   metadataBase: new URL('https://indorepickleball.com'),
+  title: {
+    default: 'Pickleball Courts in Indore | Book Online | IndorePickleball',
+    template: '%s | IndorePickleball',
+  },
+  description:
+    'Find and book pickleball courts in Indore instantly. List of all courts, timings, pricing and online booking.',
+  keywords: [
+    'pickleball courts Indore',
+    'book pickleball court Indore',
+    'pickleball Indore',
+    'pickleball club Indore',
+    'indoor pickleball Indore',
+    'pickleball court near me Indore',
+    'pickleball tournaments Indore',
+    'pickleball coaching Indore',
+    'IndorePickleball',
+  ],
+  authors: [{ name: 'IndorePickleball', url: 'https://indorepickleball.com' }],
+  creator: 'IndorePickleball',
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true },
+  },
   openGraph: {
-    title: 'Indore Pickleball',
-    description: "Indore's home for pickleball.",
+    type: 'website',
+    locale: 'en_IN',
     url: 'https://indorepickleball.com',
-    siteName: 'Indore Pickleball',
+    siteName: 'IndorePickleball',
+    title: 'Pickleball Courts in Indore | Book Online | IndorePickleball',
+    description:
+      'Find and book pickleball courts in Indore instantly. List of all courts, timings, pricing and online booking.',
+    images: [
+      {
+        url: 'https://plus.unsplash.com/premium_photo-1709932754800-051606368c90?auto=format&fit=crop&w=1200&q=80',
+        width: 1200,
+        height: 630,
+        alt: 'Pickleball courts in Indore — IndorePickleball',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pickleball Courts in Indore | Book Online | IndorePickleball',
+    description:
+      'Find and book pickleball courts in Indore instantly. List of all courts, timings, pricing and online booking.',
+    images: ['https://plus.unsplash.com/premium_photo-1709932754800-051606368c90?auto=format&fit=crop&w=1200&q=80'],
+  },
+  alternates: {
+    canonical: 'https://indorepickleball.com',
   },
 }
 

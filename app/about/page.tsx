@@ -2,8 +2,14 @@ import { Mail, MapPin, Link2 } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'About & Contact — Indore Pickleball',
-  description: 'Learn who runs Indore Pickleball and get in touch with us.',
+  title: 'About & Contact — Indore Pickleball Community',
+  description: 'IndorePickleball is a community platform connecting players, courts and tournaments in Indore, Madhya Pradesh. Get in touch with us.',
+  alternates: { canonical: 'https://indorepickleball.com/about' },
+  openGraph: {
+    title: 'About IndorePickleball | Indore Pickleball Community',
+    description: 'IndorePickleball is a community platform connecting players, courts and tournaments in Indore, Madhya Pradesh.',
+    url: 'https://indorepickleball.com/about',
+  },
 }
 
 export default function AboutPage() {

@@ -3,8 +3,14 @@ import { MapPin, IndianRupee, ArrowUpRight } from 'lucide-react'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: 'Tournaments — Indore Pickleball',
-  description: 'Upcoming pickleball tournaments in Indore.',
+  title: 'Pickleball Tournaments in Indore',
+  description: 'Upcoming pickleball tournaments in Indore — open championships, doubles cups, and seasonal events. Register online.',
+  alternates: { canonical: 'https://indorepickleball.com/tournaments' },
+  openGraph: {
+    title: 'Pickleball Tournaments in Indore | IndorePickleball',
+    description: 'Upcoming pickleball tournaments in Indore — open championships, doubles cups, and seasonal events. Register online.',
+    url: 'https://indorepickleball.com/tournaments',
+  },
 }
 
 // ─── ADD / EDIT TOURNAMENTS HERE ─────────────────────────────────────────────

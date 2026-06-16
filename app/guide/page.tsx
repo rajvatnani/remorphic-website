@@ -2,8 +2,14 @@ import Link from 'next/link'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
-  title: "Beginner's Guide to Pickleball — Indore Pickleball",
-  description: 'Learn pickleball rules, how to play, and what gear you need.',
+  title: "Beginner's Guide to Pickleball — Rules, Gear & How to Play",
+  description: 'New to pickleball? Learn the rules, scoring, court dimensions and what gear you need to get started in Indore.',
+  alternates: { canonical: 'https://indorepickleball.com/guide' },
+  openGraph: {
+    title: "Beginner's Guide to Pickleball | IndorePickleball",
+    description: 'New to pickleball? Learn the rules, scoring, court dimensions and what gear you need to get started in Indore.',
+    url: 'https://indorepickleball.com/guide',
+  },
 }
 
 const rules = [

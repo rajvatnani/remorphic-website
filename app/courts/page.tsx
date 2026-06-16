@@ -4,8 +4,14 @@ import type { Metadata } from 'next'
 import { supabase } from '@/lib/supabase'
 
 export const metadata: Metadata = {
-  title: 'Pickleball Courts in Indore — Indore Pickleball',
-  description: 'Find all pickleball courts in Indore. Book your slot, get directions, and view pricing.',
+  title: 'Book Pickleball Courts in Indore',
+  description: 'Find and book pickleball courts in Indore instantly. View court locations, timings, pricing and book your slot online.',
+  alternates: { canonical: 'https://indorepickleball.com/courts' },
+  openGraph: {
+    title: 'Book Pickleball Courts in Indore | IndorePickleball',
+    description: 'Find and book pickleball courts in Indore instantly. View court locations, timings, pricing and book your slot online.',
+    url: 'https://indorepickleball.com/courts',
+  },
 }
 
 export const revalidate = 60
